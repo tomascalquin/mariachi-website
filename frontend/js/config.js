@@ -4,7 +4,7 @@
 // No hace falta tocar ningún otro archivo del sitio para estos cambios.
 
 const SITE_CONFIG = {
-  nombreGrupo: "La Mariachi del Valle",
+  nombreGrupo: "La mariachi del valle de Colchagua",
   tagline: "Música en vivo para las noches que sí importan",
 
   // Número de WhatsApp en formato: código país + número, SIN el signo + ni espacios.
@@ -14,8 +14,8 @@ const SITE_CONFIG = {
   email: "carolina.diazt@hotmail.com",
 
   // Dejar vacío ("") cualquiera que no tengas todavía — el ícono no se mostrará.
-  instagram: "",
-  facebook: "",
+  instagram: "https://www.instagram.com/lamariachidelvalle?igsh=MTdjMGx6d3BwdjNwbg==",
+  facebook: "https://www.facebook.com/share/19Uh5we6W5/?mibextid=wwXIfr",
   tiktok: "",
 
   comunasCobertura: [
