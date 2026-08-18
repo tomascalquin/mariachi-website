@@ -15,6 +15,7 @@ const paquetesRoutes = require('./routes/paquetes');
 const contactoRoutes = require('./routes/contacto');
 
 const app = express();
+app.set('trust proxy', 1);
 const PORT = process.env.PORT || 3000;
 
 if (!process.env.JWT_SECRET) {
@@ -38,7 +39,7 @@ app.use(helmet({
 
 // CORS
 app.use(cors({
-  origin: process.env.SITE_URL || true,
+  origin: true,
   credentials: true,
 }));
 

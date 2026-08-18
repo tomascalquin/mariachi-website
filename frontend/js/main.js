@@ -195,13 +195,22 @@
   }
 
   async function enviarJSON(url, datos) {
-    const res = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(datos),
-    });
-    const data = await res.json().catch(() => ({}));
-    return { ok: res.ok, data };
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(datos),
+      });
+      let data = {};
+      try {
+        data = await res.json();
+      } catch (e) {
+        data.error = `Error del servidor (Código ${res.status})`;
+      }
+      return { ok: res.ok, data };
+    } catch (err) {
+      return { ok: false, data: { error: "Error de red al conectar con el servidor." } };
+    }
   }
 
   function initFormReserva() {
