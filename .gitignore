@@ -1,0 +1,9 @@
+node_modules/
+.env
+backend/db/mariachi.db
+backend/db/mariachi.db-*
+backend/uploads/*
+!backend/uploads/.gitkeep
+backend/backups/*.db
+backend/backups/*.log
+!backend/backups/.gitkeep

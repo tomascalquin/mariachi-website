@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel de administración</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<div class="panel-shell">
+
+  <aside class="panel-sidebar">
+    <div class="panel-sidebar__marca">Panel · Mariachi</div>
+    <nav>
+      <button class="tab-link activo" data-tab="resumen">Resumen</button>
+      <button class="tab-link" data-tab="reservas">Reservas <span class="contador" id="contador-reservas" hidden>0</span></button>
+      <button class="tab-link" data-tab="testimonios">Testimonios <span class="contador" id="contador-testimonios" hidden>0</span></button>
+      <button class="tab-link" data-tab="galeria">Galería</button>
+      <button class="tab-link" data-tab="paquetes">Paquetes</button>
+      <button class="tab-link" data-tab="mensajes">Mensajes <span class="contador" id="contador-mensajes" hidden>0</span></button>
+    </nav>
+    <button class="boton boton-borde" id="btn-logout" style="margin-top:16px;">Cerrar sesión</button>
+  </aside>
+
+  <main class="panel-main">
+    <div class="panel-main__header">
+      <h2 id="titulo-tab">Resumen</h2>
+      <div class="panel-main__usuario">
+        <span id="usuario-actual"></span>
+        <a href="../index.html" target="_blank" class="boton boton-borde boton-chico">Ver sitio</a>
+      </div>
+    </div>
+
+    <!-- RESUMEN -->
+    <section class="tab-panel activo" id="tab-resumen">
+      <div class="stats-grid" id="stats-grid"></div>
+      <p style="color:var(--a-tinta-suave);">Bienvenida/o al panel. Acá puedes revisar y confirmar reservas, aprobar comentarios, subir fotos y actualizar tus paquetes — sin tocar código.</p>
+    </section>
+
+    <!-- RESERVAS -->
+    <section class="tab-panel" id="tab-reservas">
+      <div class="tabla-wrap">
+        <table>
+          <thead>
+            <tr><th>Cliente</th><th>Evento</th><th>Fecha</th><th>Comuna</th><th>Paquete</th><th>Contacto</th><th>Estado</th><th></th></tr>
+          </thead>
+          <tbody id="tabla-reservas-body"></tbody>
+        </table>
+      </div>
+      <div class="vacio" id="reservas-vacio" hidden>Todavía no hay reservas.</div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="tab-panel" id="tab-testimonios">
+      <div class="lista-tarjetas" id="lista-testimonios"></div>
+      <div class="vacio" id="testimonios-vacio" hidden>Todavía no hay testimonios.</div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section class="tab-panel" id="tab-galeria">
+      <form class="subir-form" id="form-galeria">
+        <div class="campo">
+          <label for="g-imagen">Imagen (JPG, PNG o WEBP, máx. 5MB)</label>
+          <input type="file" id="g-imagen" name="imagen" accept="image/jpeg,image/png,image/webp" required>
+        </div>
+        <div class="campo">
+          <label for="g-descripcion">Descripción</label>
+          <input type="text" id="g-descripcion" name="descripcion" maxlength="200" placeholder="Matrimonio en Santa Cruz">
+        </div>
+        <div class="campo">
+          <label for="g-tipo">Tipo de evento</label>
+          <input type="text" id="g-tipo" name="tipo_evento" maxlength="60" placeholder="Matrimonio">
+        </div>
+        <button type="submit" class="boton boton-dorado">Subir foto</button>
+      </form>
+      <div class="aviso" id="aviso-galeria" hidden></div>
+      <div class="grilla-galeria-admin" id="grilla-galeria-admin"></div>
+    </section>
+
+    <!-- PAQUETES -->
+    <section class="tab-panel" id="tab-paquetes">
+      <div class="tabla-wrap">
+        <table>
+          <thead>
+            <tr><th style="width:18%;">Nombre</th><th>Descripción</th><th style="width:10%;">Minutos</th><th style="width:14%;">Precio CLP</th><th style="width:8%;">Activo</th><th style="width:14%;"></th></tr>
+          </thead>
+          <tbody id="tabla-paquetes-body"></tbody>
+          <tfoot>
+            <tr class="fila-nueva">
+              <td><input type="text" id="np-nombre" placeholder="Nombre del paquete"></td>
+              <td><input type="text" id="np-descripcion" placeholder="Descripción"></td>
+              <td><input type="number" id="np-duracion" min="1" placeholder="60"></td>
+              <td><input type="number" id="np-precio" min="0" placeholder="50000"></td>
+              <td></td>
+              <td><button class="boton boton-dorado boton-chico" id="btn-agregar-paquete" type="button">+ Agregar</button></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="aviso" id="aviso-paquetes" hidden></div>
+    </section>
+
+    <!-- MENSAJES -->
+    <section class="tab-panel" id="tab-mensajes">
+      <div class="lista-tarjetas" id="lista-mensajes"></div>
+      <div class="vacio" id="mensajes-vacio" hidden>Todavía no hay mensajes.</div>
+    </section>
+
+  </main>
+</div>
+
+<script src="js/dashboard.js"></script>
+</body>
+</html>
