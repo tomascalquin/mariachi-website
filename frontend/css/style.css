@@ -9,6 +9,20 @@
 
 html { scroll-behavior: smooth; }
 
+/* --- Base: evita que el Preflight de Tailwind deje la página sin estilos --- */
+body {
+  font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #FAF7F0;
+  color: #241F38;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+*, *::before, *::after { box-sizing: border-box; }
+
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {

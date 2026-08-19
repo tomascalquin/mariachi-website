@@ -30,9 +30,9 @@ app.use(helmet({
       defaultSrc: ["'self'"],
       styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
       fontSrc: ["'self'", 'https://fonts.gstatic.com'],
-      scriptSrc: ["'self'"],
+      scriptSrc: ["'self'", 'https://cdn.tailwindcss.com', "'unsafe-inline'"],
       imgSrc: ["'self'", 'data:', 'https://res.cloudinary.com'],
-      connectSrc: ["'self'"],
+      connectSrc: ["'self'", 'https://cdn.tailwindcss.com'],
     },
   },
 }));

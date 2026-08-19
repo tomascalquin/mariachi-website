@@ -5,18 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La mariachi del valle de Colchagua — Música en vivo en la Región de O'Higgins</title>
 <meta name="description" content="Serenatas, matrimonios, cumpleaños y eventos con mariachi en vivo en Rancagua, San Fernando, Santa Cruz, Chimbarongo y toda la Región de O'Higgins. Reserva por WhatsApp.">
-<script src="https://cdn.tailwindcss.com"></script>
 <script>
+  // La config DEBE ir antes de cargar el CDN
+  window.tailwind = window.tailwind || {};
   tailwind.config = {
     theme: {
       extend: {
         colors: {
-          noche:    { DEFAULT:'#1C1830', suave:'#2A2444', borde:'#3B3460' },
-          dorado:   { DEFAULT:'#D4A73C', suave:'#E8C978' },
-          vino:     { DEFAULT:'#9A2B3B', suave:'#B84756' },
-          crema:    '#F3EEE2',
-          lino:     '#FAF7F0',
-          tinta:    { DEFAULT:'#241F38', suave:'#524A6E' },
+          noche:  { DEFAULT:'#1C1830', suave:'#2A2444', borde:'#3B3460' },
+          dorado: { DEFAULT:'#D4A73C', suave:'#E8C978' },
+          vino:   { DEFAULT:'#9A2B3B', suave:'#B84756' },
+          crema:  '#F3EEE2',
+          lino:   '#FAF7F0',
+          tinta:  { DEFAULT:'#241F38', suave:'#524A6E' },
         },
         fontFamily: {
           display: ['Fraunces','Georgia','serif'],
@@ -26,17 +27,16 @@
           gold: '0 0 0 1px #D4A73C, 0 6px 24px rgba(212,167,60,.3)',
           card: '0 12px 30px rgba(28,24,48,.2)',
         },
-        transitionTimingFunction: {
-          smooth: 'cubic-bezier(.4,0,.2,1)',
-        },
       },
     },
   }
 </script>
+<script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
 
