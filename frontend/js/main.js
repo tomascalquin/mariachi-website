@@ -292,5 +292,60 @@
     initEstrellas();
     initFormReserva();
     initFormTestimonio();
+    initScrollAnimations();
+    initTopbarScroll();
+    initNavActivo();
   });
+
+  // ---------- Animaciones al hacer scroll ----------
+  function initScrollAnimations() {
+    if (!("IntersectionObserver" in window)) return;
+    const targets = document.querySelectorAll(
+      ".tarjeta-paquete, .tarjeta-testimonio, .servicio-row, " +
+      ".nosotros-texto, .nosotros-ilustracion, .galeria-item, " +
+      ".servicios-encabezado, .testimonios-encabezado, " +
+      ".form-side, .form-campo, .footer-item"
+    );
+    targets.forEach((el) => el.classList.add("will-animate"));
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e, i) => {
+          if (e.isIntersecting) {
+            setTimeout(() => e.target.classList.add("visible"), i * 60);
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    targets.forEach((el) => obs.observe(el));
+  }
+
+  // ---------- Topbar blur al hacer scroll ----------
+  function initTopbarScroll() {
+    const topbar = document.querySelector(".topbar");
+    if (!topbar) return;
+    const onScroll = () => topbar.classList.toggle("scrolled", window.scrollY > 30);
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
+  // ---------- Nav activo según sección visible ----------
+  function initNavActivo() {
+    const secciones = ["inicio", "nosotros", "servicios", "galeria", "testimonios", "reservar"]
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+    const links = document.querySelectorAll(".rail-nav a");
+    if (!links.length || !secciones.length) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            links.forEach((a) => a.classList.toggle("activo", a.getAttribute("href") === "#" + e.target.id));
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -50% 0px" }
+    );
+    secciones.forEach((s) => obs.observe(s));
+  }
 })();
