@@ -23,6 +23,23 @@ img { max-width: 100%; display: block; }
 *, *::before, *::after { box-sizing: border-box; }
 
 
+/* ─── Colores de fondo garantizados (fallback si Tailwind custom colors no cargan) ─── */
+.bg-noche,   section.bg-noche   { background-color: #1C1830 !important; }
+.bg-noche-suave                  { background-color: #2A2444; }
+.bg-lino,    section.bg-lino    { background-color: #FAF7F0 !important; }
+.text-crema  { color: #F3EEE2; }
+.text-tinta  { color: #241F38; }
+.text-dorado { color: #D4A73C; }
+.text-vino   { color: #9A2B3B; }
+
+/* ─── Contenedor ancho completo en desktop ─── */
+.max-w-6xl { max-width: 1200px; }
+@media (min-width: 1440px) { .max-w-6xl { max-width: 1400px; } }
+
+/* ─── Asegurar que las secciones ocupen todo el ancho ─── */
+section { width: 100%; }
+
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
@@ -31,6 +48,7 @@ img { max-width: 100%; display: block; }
     transition-duration: 0.01ms !important;
   }
 }
+
 
 body {
   font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -72,7 +90,62 @@ h1, h2, h3, .font-display {
 }
 .animate-pulse-gold { animation: pulseSoft 2.4s ease-in-out infinite; }
 
-/* ---------- Tarjetas de paquetes ---------- */
+/* ---------- Tarjetas de paquetes (generadas por JS) ---------- */
+.grilla-paquetes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+.tarjeta-paquete {
+  background: #2A2444;
+  border: 1px solid #3B3460;
+  border-radius: 10px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 260ms ease, border-color 260ms ease, box-shadow 260ms ease;
+}
+.tarjeta-paquete:hover {
+  transform: translateY(-6px);
+  border-color: #D4A73C;
+  box-shadow: 0 16px 40px rgba(28,24,48,.35);
+}
+.tarjeta-paquete h3 { color: #F3EEE2; font-size: 1.2rem; margin: 0; font-family: 'Fraunces', Georgia, serif; }
+.tarjeta-paquete__precio { font-family: 'Fraunces', Georgia, serif; font-size: 1.8rem; color: #D4A73C; }
+.tarjeta-paquete__duracion { font-size: 0.8rem; color: rgba(243,238,226,.6); text-transform: uppercase; letter-spacing: .06em; }
+.tarjeta-paquete p { color: rgba(243,238,226,.82); flex-grow: 1; font-size: 0.9rem; }
+.tarjeta-paquete a {
+  display: inline-flex; align-items: center;
+  border: 1.5px solid rgba(243,238,226,.35);
+  color: #F3EEE2;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 200ms, color 200ms;
+}
+.tarjeta-paquete a:hover { border-color: #D4A73C; color: #D4A73C; }
+
+/* ---------- Testimonios (generadas por JS) ---------- */
+.grilla-testimonios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-bottom: 2.5em;
+}
+.tarjeta-testimonio {
+  background: #FAF7F0;
+  color: #241F38;
+  border-radius: 10px;
+  padding: 22px;
+}
+.tarjeta-testimonio__estrellas { color: #D4A73C; letter-spacing: 2px; margin-bottom: 8px; }
+.tarjeta-testimonio__autor { font-weight: 600; margin-top: 10px; font-size: 0.9rem; }
+.tarjeta-testimonio__comuna { font-size: 0.8rem; color: #524A6E; }
+
+
 .tarjeta-paquete {
   transition: transform 260ms cubic-bezier(.4,0,.2,1),
               border-color 260ms ease,

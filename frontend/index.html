@@ -5,9 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La mariachi del valle de Colchagua — Música en vivo en la Región de O'Higgins</title>
 <meta name="description" content="Serenatas, matrimonios, cumpleaños y eventos con mariachi en vivo en Rancagua, San Fernando, Santa Cruz, Chimbarongo y toda la Región de O'Higgins. Reserva por WhatsApp.">
+<script src="https://cdn.tailwindcss.com"></script>
 <script>
-  // La config DEBE ir antes de cargar el CDN
-  window.tailwind = window.tailwind || {};
   tailwind.config = {
     theme: {
       extend: {
@@ -27,11 +26,11 @@
           gold: '0 0 0 1px #D4A73C, 0 6px 24px rgba(212,167,60,.3)',
           card: '0 12px 30px rgba(28,24,48,.2)',
         },
+        maxWidth: { '8xl': '1400px' },
       },
     },
   }
 </script>
-<script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -153,19 +152,6 @@
   </section>
 
 
-  <!-- ============ TESTIMONIOS ============ -->
-  <section class="superficie-noche" id="testimonios">
-    <div class="contenedor">
-      <div class="encabezado-seccion centrado">
-        <p class="ojo-etiqueta">Testimonios</p>
-        <h2>Lo que dicen quienes ya celebraron con nosotros</h2>
-      </div>
-      <div class="grilla-testimonios" id="grilla-testimonios">
-        <!-- Se llena dinámicamente desde /api/testimonios -->
-      </div>
-
-      <div class="testimonio-form-wrap">
-        <h3 style="color:var(--color-crema); margin-bottom:0.2em;">¿Ya celebraste con nosotros?</h3>
   <!-- ============ TESTIMONIOS ============ -->
   <section class="bg-noche py-14 sm:py-20" id="testimonios">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
