@@ -34,7 +34,7 @@
       `Hola${cfg.nombreGrupo ? " " + cfg.nombreGrupo : ""}, quisiera consultar disponibilidad para un evento.`
     );
     const linkWA = cfg.telefonoWhatsApp ? `https://wa.me/${cfg.telefonoWhatsApp}?text=${mensajeWA}` : "#";
-    ["whatsapp-hero-link", "whatsapp-panel-link", "whatsapp-pie-link", "whatsapp-flotante"].forEach((id) => {
+    ["whatsapp-hero-link", "whatsapp-panel-link", "whatsapp-pie-link", "whatsapp-flotante", "whatsapp-rail-link", "whatsapp-topbar-link"].forEach((id) => {
       const el = document.getElementById(id);
       if (el) el.href = linkWA;
     });

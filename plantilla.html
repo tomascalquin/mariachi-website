@@ -1,0 +1,1217 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mariachi del Valle de Colchagua</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Work+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --negro: #1c1714;
+            --negro-suave: #2a231e;
+            --vino: #7a2331;
+            --vino-claro: #9c3140;
+            --plata: #cdc4b3;
+            --plata-suave: #e4dccb;
+            --bronce: #a9743a;
+            --bronce-claro: #c99a5b;
+            --marfil: #f6f0e3;
+            --marfil-panel: #efe7d6;
+            --texto: #332c25;
+            --texto-suave: #544738;
+            --rail-w: 38px;
+            --rail-w-desktop: 190px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 17px;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--marfil);
+            color: var(--texto);
+            line-height: 1.7;
+            font-weight: 400;
+            padding-left: var(--rail-w);
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Lora', serif;
+            font-weight: 600;
+            letter-spacing: 0;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ============ RAIL: botonadura + navegación integrada ============ */
+        .rail {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: var(--rail-w);
+            background: var(--negro);
+            z-index: 60;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 26px 0 20px;
+        }
+
+        .rail-brand {
+            writing-mode: vertical-rl;
+            font-family: 'Lora', serif;
+            font-size: 13px;
+            letter-spacing: 0.08em;
+            color: var(--marfil);
+            font-weight: 600;
+            margin-bottom: 24px;
+            white-space: nowrap;
+        }
+
+        .rail-brand em {
+            color: var(--bronce-claro);
+            font-style: italic;
+        }
+
+        .rail-brand-h {
+            display: none;
+            text-align: center;
+            padding: 0 18px 22px;
+        }
+
+        .rail-brand-h .marca-chica {
+            font-size: 11.5px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--bronce-claro);
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .rail-brand-h .nombre {
+            font-family: 'Lora', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--marfil);
+            line-height: 1.25;
+        }
+
+        .rail-nav {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            padding: 0 18px;
+            gap: 2px;
+            margin-bottom: 26px;
+        }
+
+        .rail-nav a {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--plata-suave);
+            padding: 0.65rem 0.2rem;
+            border-bottom: 1px solid rgba(228, 220, 203, 0.14);
+            transition: color 0.25s ease, padding-left 0.25s ease;
+        }
+
+        .rail-nav a:hover {
+            color: var(--bronce-claro);
+            padding-left: 0.4rem;
+        }
+
+        .rail-phone {
+            display: none;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--bronce-claro);
+            padding: 0 18px;
+            margin-bottom: 24px;
+        }
+
+        .rail-line {
+            flex: 1;
+            width: 1px;
+            min-height: 60px;
+            background: linear-gradient(to bottom, transparent, var(--bronce) 8%, var(--bronce) 92%, transparent);
+            position: relative;
+        }
+
+        .rail-buttons {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .rail-btn {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 30%, var(--plata-suave), var(--plata) 45%, #8c8172 100%);
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
+            flex-shrink: 0;
+        }
+
+        @media (min-width:900px) {
+            :root {
+                --rail-w: var(--rail-w-desktop);
+            }
+
+            .rail-brand {
+                display: none;
+            }
+
+            .rail-brand-h {
+                display: block;
+            }
+
+            .rail-nav {
+                display: flex;
+            }
+
+            .rail-phone {
+                display: block;
+            }
+
+            .rail-btn {
+                width: 7px;
+                height: 7px;
+            }
+
+            .topbar {
+                display: none;
+            }
+        }
+
+        /* ============ BARRA SUPERIOR: solo en móvil ============ */
+        .topbar {
+            background: var(--marfil);
+            border-bottom: 2px solid var(--negro);
+            padding: 1.1rem 1.8rem;
+        }
+
+        .topbar-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .topbar-brand {
+            font-family: 'Lora', serif;
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--negro);
+        }
+
+        .topbar-brand em {
+            color: var(--vino);
+            font-style: italic;
+        }
+
+        .topbar-nav {
+            display: flex;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        .topbar-nav a {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--texto);
+            padding-bottom: 2px;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.25s ease, color 0.25s ease;
+        }
+
+        .topbar-nav a:hover {
+            color: var(--vino);
+            border-color: var(--vino);
+        }
+
+        .topbar-phone {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--vino);
+            white-space: nowrap;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            position: relative;
+            background: var(--negro);
+            color: var(--marfil);
+            padding: 5.5rem 1.8rem 4.5rem;
+            overflow: hidden;
+        }
+
+        .hero-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (max-width:860px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-emblem {
+                order: -1;
+                max-width: 220px;
+                margin: 0 auto;
+            }
+        }
+
+        .hero-text .marca-chica {
+            font-size: 13px;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--bronce-claro);
+            font-weight: 600;
+            margin-bottom: 1.4rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 5vw, 58px);
+            line-height: 1.06;
+            font-weight: 500;
+            color: var(--marfil);
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--bronce-claro);
+            font-weight: 500;
+        }
+
+        .hero-text p {
+            max-width: 44ch;
+            margin-top: 1.6rem;
+            font-size: 18px;
+            color: #d9cdb4;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.4rem;
+            margin-top: 2.4rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: var(--vino);
+            color: var(--marfil);
+            border: 1px solid var(--vino);
+            padding: 1rem 2.2rem;
+            font-size: 14.5px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 600;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.35s ease;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--vino-claro);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s cubic-bezier(.4, 0, .2, 1);
+            z-index: 0;
+        }
+
+        .btn-primary span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary:hover::before {
+            transform: scaleX(1);
+        }
+
+        .btn-ghost {
+            color: var(--plata-suave);
+            font-size: 14.5px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(228, 220, 203, 0.4);
+            padding-bottom: 2px;
+            transition: border-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--bronce-claro);
+            color: var(--bronce-claro);
+        }
+
+        /* emblema: guitarrón y trompeta cruzados dentro de un sello */
+        .hero-emblem {
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-emblem svg {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+        }
+
+        /* ============ SECTION SCAFFOLDING ============ */
+        section {
+            padding: 5rem 1.8rem;
+        }
+
+        .content {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        /* ============ SERVICIOS — encabezado lateral, no bloque centrado ============ */
+        .servicios-section {
+            background: var(--marfil);
+        }
+
+        .servicios-layout {
+            display: grid;
+            grid-template-columns: 0.85fr 2fr;
+            gap: 2.5rem;
+        }
+
+        @media (max-width:760px) {
+            .servicios-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .servicios-encabezado .marca-chica {
+            font-size: 13px;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--vino);
+            font-weight: 700;
+            margin-bottom: 0.9rem;
+        }
+
+        .servicios-encabezado h2 {
+            font-size: clamp(26px, 3.4vw, 34px);
+            color: var(--negro);
+            max-width: 12ch;
+            margin-bottom: 1.2rem;
+        }
+
+        .servicios-encabezado p {
+            color: var(--texto-suave);
+            font-size: 16px;
+            max-width: 28ch;
+        }
+
+        .servicios-list {
+            border-top: 1px solid rgba(51, 44, 37, 0.16);
+        }
+
+        .servicio-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            padding: 1.3rem 0.3rem;
+            border-bottom: 1px solid rgba(51, 44, 37, 0.16);
+            transition: padding-left 0.3s ease, border-color 0.3s ease;
+        }
+
+        .servicio-row:hover {
+            padding-left: 0.9rem;
+            border-color: var(--bronce);
+        }
+
+        .servicio-row h3 {
+            font-size: 21px;
+            font-weight: 600;
+            color: var(--negro);
+        }
+
+        .servicio-row .detalle {
+            font-size: 14.5px;
+            letter-spacing: 0.05em;
+            color: var(--bronce);
+            font-family: 'Work Sans', sans-serif;
+            text-align: right;
+        }
+
+        /* ============ GALERIA — título incrustado en la primera foto ============ */
+        .galeria-section {
+            background: var(--negro);
+            color: var(--marfil);
+        }
+
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.4rem;
+        }
+
+        .galeria-item {
+            aspect-ratio: 4/5;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(228, 220, 203, 0.15);
+        }
+
+        .galeria-item .frame-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 30% 20%, rgba(201, 154, 91, 0.55), transparent 55%),
+                linear-gradient(160deg, #4a3a2c 0%, #241d17 60%, #120e0b 100%);
+            transition: transform 0.6s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        .galeria-item:hover .frame-bg {
+            transform: scale(1.08);
+        }
+
+        .galeria-item-text {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 1.3rem 1rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+        }
+
+        .galeria-item-text b {
+            display: block;
+            font-family: 'Lora', serif;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .galeria-item-text span {
+            font-size: 12.5px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--bronce-claro);
+        }
+
+        .galeria-item.titulo {
+            background: var(--negro-suave);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1.6rem;
+            border: 1px solid rgba(228, 220, 203, 0.15);
+        }
+
+        .galeria-item.titulo .marca-chica {
+            font-size: 13px;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--bronce-claro);
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .galeria-item.titulo h2 {
+            font-size: 26px;
+            color: var(--marfil);
+            line-height: 1.15;
+        }
+
+        /* ============ TESTIMONIOS — asimétrico ============ */
+        .testimonios-section {
+            background: var(--marfil-panel);
+        }
+
+        .testimonios-encabezado {
+            margin-bottom: 2.6rem;
+        }
+
+        .testimonios-encabezado .marca-chica {
+            font-size: 13px;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--vino);
+            font-weight: 700;
+            margin-bottom: 0.9rem;
+        }
+
+        .testimonios-encabezado h2 {
+            font-size: clamp(26px, 3.6vw, 34px);
+            color: var(--negro);
+            max-width: 20ch;
+        }
+
+        .testimonios-layout {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 2px;
+            background: rgba(51, 44, 37, 0.14);
+        }
+
+        @media (max-width:760px) {
+            .testimonios-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .testimonio-destacado {
+            background: var(--marfil-panel);
+            padding: 3rem 2.6rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .testimonio-destacado .quote-mark {
+            font-family: 'Lora', serif;
+            font-size: 64px;
+            color: var(--vino);
+            opacity: 0.5;
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        .testimonio-destacado .testimonio-text {
+            font-size: 23px;
+            line-height: 1.6;
+        }
+
+        .testimonios-secundarios {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .testimonio {
+            background: var(--marfil-panel);
+            padding: 1.8rem 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .quote-mark {
+            font-family: 'Lora', serif;
+            font-size: 40px;
+            color: var(--vino);
+            opacity: 0.5;
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .testimonio-text {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-size: 17.5px;
+            color: var(--negro);
+            line-height: 1.6;
+            margin-bottom: 1.3rem;
+        }
+
+        .testimonio-autor {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--negro);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .testimonio-cargo {
+            font-size: 13.5px;
+            color: var(--bronce);
+            margin-top: 0.2rem;
+            font-weight: 600;
+        }
+
+        /* ============ FORMULARIO ============ */
+        .form-section {
+            background: var(--negro);
+            color: var(--marfil);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        @media (max-width:800px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        .form-side .marca-chica {
+            font-size: 13px;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--bronce-claro);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .form-side h2 {
+            font-size: clamp(26px, 3.6vw, 36px);
+            color: var(--marfil);
+            max-width: 12ch;
+            margin-bottom: 1.1rem;
+        }
+
+        .form-side p {
+            color: #c9bda4;
+            font-size: 16.5px;
+            max-width: 34ch;
+            margin-bottom: 1.8rem;
+            line-height: 1.6;
+        }
+
+        .form-side ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .form-side li {
+            font-size: 15.5px;
+            color: #d9cdb4;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .form-side li::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--bronce-claro);
+            flex-shrink: 0;
+        }
+
+        .success-message {
+            display: none;
+            padding: 1rem 1.3rem;
+            background: rgba(122, 35, 49, 0.18);
+            border-left: 3px solid var(--vino-claro);
+            color: var(--marfil);
+            font-size: 14px;
+            margin-bottom: 1.6rem;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideIn 0.35s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width:520px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #c9bda4;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.85rem 0;
+            border: none;
+            border-bottom: 2px solid rgba(228, 220, 203, 0.35);
+            font-size: 17px;
+            background: transparent;
+            color: var(--marfil);
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 75px;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #6e6255;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-bottom-color: var(--bronce-claro);
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c99a5b' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 4px center;
+            background-size: 16px;
+        }
+
+        .form-group select option {
+            background: var(--negro);
+            color: var(--marfil);
+        }
+
+        .submit-btn {
+            margin-top: 0.7rem;
+            padding: 1.05rem 2.4rem;
+            background: var(--vino);
+            border: 1px solid var(--vino);
+            color: var(--marfil);
+            font-size: 15px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .submit-btn:hover {
+            background: var(--vino-claro);
+            border-color: var(--vino-claro);
+        }
+
+        /* ============ CONTACTO + FOOTER combinados ============ */
+        footer {
+            background: var(--marfil);
+            padding: 3.5rem 1.8rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.2rem;
+            padding-bottom: 2.4rem;
+            border-bottom: 1px solid rgba(51, 44, 37, 0.16);
+        }
+
+        .footer-item p {
+            font-size: 13px;
+            color: var(--bronce);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+        }
+
+        .footer-item a {
+            color: var(--negro);
+            font-family: 'Lora', serif;
+            font-weight: 600;
+            font-size: 19px;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-item a:hover {
+            color: var(--vino);
+        }
+
+        .footer-fine {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            padding-top: 1.4rem;
+            font-size: 13px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--texto-suave);
+            font-weight: 600;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="rail" aria-hidden="true">
+        <div class="rail-brand">Mariachi <em>del Valle</em></div>
+        <div class="rail-brand-h">
+            <div class="marca-chica">Conjunto tradicional</div>
+            <div class="nombre">Mariachi del Valle de Colchagua</div>
+        </div>
+        <nav class="rail-nav">
+            <a href="#servicios">Servicios</a>
+            <a href="#galeria">Galería</a>
+            <a href="#testimonios">Testimonios</a>
+            <a href="#reservar">Reservar</a>
+        </nav>
+        <a href="tel:+56912345678" class="rail-phone">+56 9 1234 5678</a>
+        <div class="rail-line">
+            <div class="rail-buttons">
+                <span class="rail-btn"></span><span class="rail-btn"></span><span class="rail-btn"></span>
+                <span class="rail-btn"></span><span class="rail-btn"></span><span class="rail-btn"></span>
+                <span class="rail-btn"></span><span class="rail-btn"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="topbar">
+        <div class="topbar-inner">
+            <div class="topbar-brand">Mariachi <em>del Valle</em> de Colchagua</div>
+            <nav>
+                <ul class="topbar-nav">
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#galeria">Galería</a></li>
+                    <li><a href="#testimonios">Testimonios</a></li>
+                    <li><a href="#reservar">Reservar</a></li>
+                </ul>
+            </nav>
+            <a href="tel:+56912345678" class="topbar-phone">+56 9 1234 5678</a>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <div class="marca-chica">Conjunto tradicional · San Fernando, Colchagua</div>
+                <h1>Música mexicana con <em>alma de charro</em> para el valle</h1>
+                <p>Trompeta, vihuela y guitarrón en su forma más auténtica. Diez años llevando la tradición del mariachi
+                    a bodas, serenatas y viñas de Colchagua, con la misma disciplina con la que se cose un traje de
+                    charro.</p>
+                <div class="hero-cta">
+                    <a href="#reservar" class="btn-primary"><span>Solicitar disponibilidad</span></a>
+                    <a href="#galeria" class="btn-ghost">Ver el conjunto en escena</a>
+                </div>
+            </div>
+            <div class="hero-emblem">
+                <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="150" cy="150" r="140" fill="none" stroke="#a9743a" stroke-width="1.2" />
+                    <circle cx="150" cy="150" r="128" fill="none" stroke="#a9743a" stroke-width="0.6" />
+                    <path id="textTop" d="M 40 150 A 110 110 0 0 1 260 150" fill="none" />
+                    <path id="textBottom" d="M 260 150 A 110 110 0 0 1 40 150" fill="none" />
+                    <text font-family="Work Sans" font-size="11.5" letter-spacing="3" fill="#cdc4b3">
+                        <textPath href="#textTop" startOffset="50%" text-anchor="middle">MARIACHI DEL VALLE</textPath>
+                    </text>
+                    <text font-family="Work Sans" font-size="11.5" letter-spacing="3" fill="#cdc4b3">
+                        <textPath href="#textBottom" startOffset="50%" text-anchor="middle">SAN FERNANDO · CHILE
+                        </textPath>
+                    </text>
+
+                    <!-- guitarrón -->
+                    <g transform="translate(150,150) rotate(-28)" fill="none" stroke="#c99a5b" stroke-width="2.2"
+                        stroke-linecap="round">
+                        <path
+                            d="M -14 55 C -34 45 -34 15 -18 2 C -30 -8 -30 -28 -14 -38 C 2 -48 18 -44 22 -30 C 30 -34 40 -28 40 -16 C 40 -4 30 2 22 -2 C 30 8 28 26 14 34 C 0 42 -6 50 -14 55 Z" />
+                        <line x1="4" y1="-38" x2="10" y2="-78" />
+                        <circle cx="4" cy="-4" r="7" />
+                    </g>
+
+                    <!-- trompeta -->
+                    <g transform="translate(150,150) rotate(28) scale(-1,1)" fill="none" stroke="#c99a5b"
+                        stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M -70 6 L -12 6 L -12 -6 L -70 -6" />
+                        <path d="M -12 10 L 22 26 L 30 6 L 22 -14 L -12 -10 Z" />
+                        <line x1="-46" y1="6" x2="-46" y2="-16" />
+                        <line x1="-56" y1="6" x2="-56" y2="-16" />
+                        <line x1="-36" y1="6" x2="-36" y2="-16" />
+                        <circle cx="-46" cy="-19" r="3.5" />
+                        <circle cx="-56" cy="-19" r="3.5" />
+                        <circle cx="-36" cy="-19" r="3.5" />
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section class="servicios-section" id="servicios">
+        <div class="content servicios-layout">
+            <div class="servicios-encabezado">
+                <div class="marca-chica">Lo que ofrecemos</div>
+                <h2>Un repertorio para cada ocasión</h2>
+                <p>Del romance de una serenata a la formalidad de un evento corporativo.</p>
+            </div>
+            <div class="servicios-list">
+                <div class="servicio-row">
+                    <h3>Serenatas</h3><span class="detalle">Repertorio romántico</span>
+                </div>
+                <div class="servicio-row">
+                    <h3>Bodas</h3><span class="detalle">Ceremonia y recepción</span>
+                </div>
+                <div class="servicio-row">
+                    <h3>Cumpleaños</h3><span class="detalle">Celebración en familia</span>
+                </div>
+                <div class="servicio-row">
+                    <h3>Aniversarios</h3><span class="detalle">Momentos para recordar</span>
+                </div>
+                <div class="servicio-row">
+                    <h3>Cenas privadas</h3><span class="detalle">Ambiente íntimo</span>
+                </div>
+                <div class="servicio-row">
+                    <h3>Eventos corporativos</h3><span class="detalle">Cierre de temporada</span>
+                </div>
+                <div class="servicio-row">
+                    <h3>Degustaciones en viña</h3><span class="detalle">Maridaje con música</span>
+                </div>
+                <div class="servicio-row">
+                    <h3>Celebraciones</h3><span class="detalle">A tu medida</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="galeria-section" id="galeria">
+        <div class="content">
+            <div class="galeria-grid">
+                <div class="galeria-item titulo">
+                    <div class="marca-chica">Momentos destacados</div>
+                    <h2>Galería de eventos por el valle</h2>
+                </div>
+                <div class="galeria-item">
+                    <div class="frame-bg"></div>
+                    <div class="galeria-item-text"><b>Boda en Colchagua</b><span>Noviembre 2023</span></div>
+                </div>
+                <div class="galeria-item">
+                    <div class="frame-bg"></div>
+                    <div class="galeria-item-text"><b>Cena de gala</b><span>Viña Los Lingues</span></div>
+                </div>
+                <div class="galeria-item">
+                    <div class="frame-bg"></div>
+                    <div class="galeria-item-text"><b>Degustación</b><span>Viña Santa Cruz</span></div>
+                </div>
+                <div class="galeria-item">
+                    <div class="frame-bg"></div>
+                    <div class="galeria-item-text"><b>Serenata nocturna</b><span>San Fernando</span></div>
+                </div>
+                <div class="galeria-item">
+                    <div class="frame-bg"></div>
+                    <div class="galeria-item-text"><b>Aniversario</b><span>25 años</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonios-section" id="testimonios">
+        <div class="content">
+            <div class="testimonios-encabezado">
+                <div class="marca-chica">Opiniones</div>
+                <h2>Lo que dicen quienes ya celebraron con nosotros</h2>
+            </div>
+            <div class="testimonios-layout">
+                <div class="testimonio-destacado">
+                    <div class="quote-mark">“</div>
+                    <p class="testimonio-text">Fueron los mejores en nuestra boda. La música fue impecable y los músicos
+                        muy profesionales. Todos nuestros invitados preguntaron por su contacto.</p>
+                    <div class="testimonio-autor">María Fernanda López</div>
+                    <div class="testimonio-cargo">Boda · Noviembre 2023</div>
+                </div>
+                <div class="testimonios-secundarios">
+                    <div class="testimonio">
+                        <div class="quote-mark">“</div>
+                        <p class="testimonio-text">Hicieron la serenata más romántica que imaginé para mi esposa.
+                            Llegaron puntuales y fueron muy atentos.</p>
+                        <div class="testimonio-autor">Carlos Mendoza</div>
+                        <div class="testimonio-cargo">Serenata · Aniversario</div>
+                    </div>
+                    <div class="testimonio">
+                        <div class="quote-mark">“</div>
+                        <p class="testimonio-text">Para nuestro evento corporativo fueron excelentes. Ambiente especial
+                            y profesional.</p>
+                        <div class="testimonio-autor">Roberto Silva</div>
+                        <div class="testimonio-cargo">Evento corporativo · Viña</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="form-section" id="reservar">
+        <div class="content">
+            <div class="form-grid">
+                <div class="form-side">
+                    <div class="marca-chica">Reservar</div>
+                    <h2>Solicita tu evento</h2>
+                    <p>Completa el formulario con los detalles de tu celebración y te confirmaremos disponibilidad en
+                        menos de 24 horas.</p>
+                    <ul>
+                        <li>Respuesta garantizada en 24 horas</li>
+                        <li>Conjunto completo de 7 músicos</li>
+                        <li>Repertorio a medida para tu evento</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="success-message" id="successMsg">✓ Gracias por tu solicitud. Nos contactaremos pronto
+                        para confirmar los detalles.</div>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group"><label>Nombre completo</label><input type="text" id="nombre"
+                                    required></div>
+                            <div class="form-group"><label>Email</label><input type="email" id="email" required></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Teléfono</label><input type="tel" id="telefono"
+                                    placeholder="+56 9 XXXX XXXX" required></div>
+                            <div class="form-group">
+                                <label>Tipo de evento</label>
+                                <select id="evento" required>
+                                    <option value="">Selecciona</option>
+                                    <option value="serenata">Serenata</option>
+                                    <option value="boda">Boda</option>
+                                    <option value="cumpleaños">Cumpleaños</option>
+                                    <option value="aniversario">Aniversario</option>
+                                    <option value="cena-privada">Cena privada</option>
+                                    <option value="corporativo">Evento corporativo</option>
+                                    <option value="viñedo">Degustación en viñedo</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Fecha del evento</label><input type="date" id="fecha"
+                                    required></div>
+                            <div class="form-group"><label>Hora estimada</label><input type="time" id="hora" required>
+                            </div>
+                        </div>
+                        <div class="form-group"><label>Ubicación del evento</label><input type="text" id="ubicacion"
+                                placeholder="Dirección o nombre del lugar" required></div>
+                        <div class="form-group"><label>Detalles y preferencias</label><textarea id="detalles"
+                                placeholder="Cuéntanos sobre tu evento, duración, tipo de música preferida..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Enviar solicitud</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-item">
+                    <p>Teléfono</p><a href="tel:+56912345678">+56 9 1234 5678</a>
+                </div>
+                <div class="footer-item">
+                    <p>Email</p><a href="mailto:contacto@mariachi.cl">contacto@mariachi.cl</a>
+                </div>
+                <div class="footer-item">
+                    <p>Ubicación</p><a href="#">San Fernando, Colchagua</a>
+                </div>
+                <div class="footer-item">
+                    <p>Instagram</p><a href="#">@mariachidelvallecolchagua</a>
+                </div>
+            </div>
+            <div class="footer-fine">
+                <span>Mariachi del Valle de Colchagua</span>
+                <span>© 2024 · San Fernando, Chile</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const telefono = document.getElementById('telefono').value;
+            const evento = document.getElementById('evento').value;
+            const fecha = document.getElementById('fecha').value;
+            const hora = document.getElementById('hora').value;
+            const ubicacion = document.getElementById('ubicacion').value;
+
+            if (nombre && email && telefono && evento && fecha && hora && ubicacion) {
+                const successMsg = document.getElementById('successMsg');
+                successMsg.classList.add('show');
+                document.getElementById('contactForm').reset();
+                setTimeout(() => successMsg.classList.remove('show'), 6000);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
