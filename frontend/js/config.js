@@ -3,7 +3,7 @@
 // ✏️  EDITA SOLO ESTE ARCHIVO para poner los datos reales de tu mamá.
 // No hace falta tocar ningún otro archivo del sitio para estos cambios.
 
-const SITE_CONFIG = {
+window.SITE_CONFIG = {
   nombreGrupo: "La mariachi del valle de Colchagua",
   tagline: "Música en vivo para las noches que sí importan",
 

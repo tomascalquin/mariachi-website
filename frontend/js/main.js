@@ -101,13 +101,27 @@
         </div>
       `).join("");
 
-      if (selectPaquete) {
-        paquetes.forEach((p) => {
-          const opt = document.createElement("option");
-          opt.value = p.id;
-          opt.textContent = `${p.nombre} — ${fmtCLP.format(p.precio_clp || 0)}`;
-          selectPaquete.appendChild(opt);
-        });
+      const containerPaquetes = document.getElementById("paquetes-elegir");
+      if (containerPaquetes) {
+        // Mantenemos la opción por defecto ("Aún no sé") al principio
+        const defaultOption = `
+          <label class="paquete-radio">
+            <input type="radio" name="paquete_id" value="" checked>
+            <span class="paquete-radio__contenido">Aún no sé / a definir</span>
+          </label>
+        `;
+        
+        const radioOptions = paquetes.map((p) => `
+          <label class="paquete-radio">
+            <input type="radio" name="paquete_id" value="${p.id}">
+            <span class="paquete-radio__contenido">
+              <span class="paquete-radio__nombre">${escapeHTML(p.nombre)}</span>
+              <span class="paquete-radio__precio">${fmtCLP.format(p.precio_clp || 0)}</span>
+            </span>
+          </label>
+        `).join("");
+
+        containerPaquetes.innerHTML = defaultOption + radioOptions;
       }
     } catch {
       grilla.innerHTML = `<div class="estado-vacio">No pudimos cargar los paquetes ahora. Intenta recargar la página.</div>`;

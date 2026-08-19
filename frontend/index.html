@@ -5,6 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La mariachi del valle de Colchagua — Música en vivo en la Región de O'Higgins</title>
 <meta name="description" content="Serenatas, matrimonios, cumpleaños y eventos con mariachi en vivo en Rancagua, San Fernando, Santa Cruz, Chimbarongo y toda la Región de O'Higgins. Reserva por WhatsApp.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          noche:    { DEFAULT:'#1C1830', suave:'#2A2444', borde:'#3B3460' },
+          dorado:   { DEFAULT:'#D4A73C', suave:'#E8C978' },
+          vino:     { DEFAULT:'#9A2B3B', suave:'#B84756' },
+          crema:    '#F3EEE2',
+          lino:     '#FAF7F0',
+          tinta:    { DEFAULT:'#241F38', suave:'#524A6E' },
+        },
+        fontFamily: {
+          display: ['Fraunces','Georgia','serif'],
+          sans:    ['Work Sans','-apple-system','sans-serif'],
+        },
+        boxShadow: {
+          gold: '0 0 0 1px #D4A73C, 0 6px 24px rgba(212,167,60,.3)',
+          card: '0 12px 30px rgba(28,24,48,.2)',
+        },
+        transitionTimingFunction: {
+          smooth: 'cubic-bezier(.4,0,.2,1)',
+        },
+      },
+    },
+  }
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,42 +43,42 @@
 <a class="oculto-visualmente" href="#contenido-principal">Saltar al contenido</a>
 
 <!-- ============ ENCABEZADO ============ -->
-<header class="encabezado">
-  <div class="encabezado__barra">
-    <a href="#inicio" class="encabezado__nombre" data-site="nombreGrupo">La mariachi del valle de Colchagua</a>
-    <nav aria-label="Navegación principal">
-      <ul class="encabezado__nav">
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#nosotros">Nosotros</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#galeria">Galería</a></li>
-        <li><a href="#testimonios">Testimonios</a></li>
-        <li><a href="#reservar">Reservar</a></li>
+<header class="sticky top-0 z-50 bg-noche/90 backdrop-blur-md border-b border-noche-borde">
+  <div class="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
+    <a href="#inicio" class="font-display text-crema font-semibold text-base sm:text-xl leading-tight transition-colors hover:text-dorado" data-site="nombreGrupo">La mariachi del valle de Colchagua</a>
+    <nav aria-label="Navegación principal" class="hidden md:block">
+      <ul class="flex gap-6 list-none m-0 p-0">
+        <li><a href="#inicio"  class="text-crema/80 text-sm hover:text-dorado transition-colors duration-200">Inicio</a></li>
+        <li><a href="#nosotros" class="text-crema/80 text-sm hover:text-dorado transition-colors duration-200">Nosotros</a></li>
+        <li><a href="#servicios" class="text-crema/80 text-sm hover:text-dorado transition-colors duration-200">Servicios</a></li>
+        <li><a href="#galeria" class="text-crema/80 text-sm hover:text-dorado transition-colors duration-200">Galería</a></li>
+        <li><a href="#testimonios" class="text-crema/80 text-sm hover:text-dorado transition-colors duration-200">Testimonios</a></li>
+        <li><a href="#reservar" class="text-crema/80 text-sm hover:text-dorado transition-colors duration-200">Reservar</a></li>
       </ul>
     </nav>
-    <div class="encabezado__acciones">
-      <a href="#reservar" class="boton boton-dorado" style="padding:10px 20px;">Reservar</a>
-      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <div class="flex items-center gap-3">
+      <a href="#reservar" class="hidden sm:inline-flex items-center gap-2 bg-dorado hover:bg-dorado-suave text-noche font-semibold text-sm px-4 py-2 rounded-md transition-all duration-200 hover:-translate-y-0.5 hover:shadow-card">Reservar</a>
+      <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" class="md:hidden text-crema p-1.5 rounded transition-colors hover:text-dorado">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
   </div>
-  <nav class="menu-movil" id="menu-movil" aria-label="Navegación móvil">
-    <a href="#inicio">Inicio</a>
-    <a href="#nosotros">Nosotros</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#galeria">Galería</a>
-    <a href="#testimonios">Testimonios</a>
-    <a href="#reservar">Reservar</a>
+  <nav id="menu-movil" aria-label="Navegación móvil" class="menu-movil md:hidden flex-col bg-noche border-t border-noche-borde px-4 pb-4 pt-1 gap-0">
+    <a href="#inicio"     class="text-crema/85 py-2.5 border-b border-white/5 text-sm hover:text-dorado transition-colors">Inicio</a>
+    <a href="#nosotros"   class="text-crema/85 py-2.5 border-b border-white/5 text-sm hover:text-dorado transition-colors">Nosotros</a>
+    <a href="#servicios"  class="text-crema/85 py-2.5 border-b border-white/5 text-sm hover:text-dorado transition-colors">Servicios</a>
+    <a href="#galeria"    class="text-crema/85 py-2.5 border-b border-white/5 text-sm hover:text-dorado transition-colors">Galería</a>
+    <a href="#testimonios" class="text-crema/85 py-2.5 border-b border-white/5 text-sm hover:text-dorado transition-colors">Testimonios</a>
+    <a href="#reservar"   class="text-crema/85 py-2.5 text-sm hover:text-dorado transition-colors">Reservar</a>
   </nav>
 </header>
 
 <main id="contenido-principal">
 
   <!-- ============ HERO ============ -->
-  <section class="hero" id="inicio">
-    <div class="hero__guirnalda-wrap">
-      <svg class="guirnalda" viewBox="0 0 720 90" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+  <section class="bg-noche text-crema pt-2 pb-16 sm:pb-24 text-center overflow-hidden" id="inicio">
+    <div class="max-w-2xl mx-auto px-4 mb-2">
+      <svg class="guirnalda w-full h-auto" viewBox="0 0 720 90" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
         <path d="M10,20 Q180,90 360,20 T710,20" fill="none" stroke="#3B3460" stroke-width="2"/>
         <g fill="#D4A73C">
           <circle cx="40" cy="34" r="5"/><circle cx="105" cy="58" r="5"/><circle cx="175" cy="72" r="5"/>
@@ -59,83 +87,71 @@
         </g>
       </svg>
     </div>
-    <div class="hero__contenido">
-      <p class="hero__franja">🎻 Región de O'Higgins</p>
-      <h1>Música en vivo para las <em>noches</em> que sí importan</h1>
-      <p class="hero__subtexto">Serenatas, matrimonios, cumpleaños y aniversarios con mariachi en vivo, para familias de Rancagua, San Fernando, Santa Cruz, Chimbarongo y comunas cercanas.</p>
-      <div class="hero__acciones">
-        <a href="#" class="boton boton-dorado" id="whatsapp-hero-link" target="_blank" rel="noopener">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6">
+      <p class="animate-fade-up text-dorado-suave text-sm tracking-widest uppercase mb-4">🎻 Región de O'Higgins</p>
+      <h1 class="animate-fade-up-2 font-display italic text-4xl sm:text-5xl lg:text-6xl text-crema leading-tight mb-4">
+        Música en vivo para las <em class="text-dorado not-italic">noches</em> que sí importan
+      </h1>
+      <p class="animate-fade-up-3 text-crema/80 text-base sm:text-lg max-w-xl mx-auto mb-8">Serenatas, matrimonios, cumpleaños y aniversarios con mariachi en vivo en Rancagua, San Fernando, Santa Cruz, Chimbarongo y comunas cercanas.</p>
+      <div class="animate-fade-up-4 flex flex-wrap gap-3 justify-center mb-8">
+        <a href="#" id="whatsapp-hero-link" target="_blank" rel="noopener"
+           class="animate-pulse-gold inline-flex items-center gap-2 bg-dorado hover:bg-dorado-suave text-noche font-semibold px-6 py-3 rounded-md transition-all duration-200 hover:-translate-y-1 hover:shadow-card">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.5-8.5zM12 21.6c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-3.7 1 1-3.6-.2-.4A9.5 9.5 0 0 1 2.4 12C2.4 6.7 6.7 2.4 12 2.4S21.6 6.7 21.6 12 17.3 21.6 12 21.6z"/></svg>
           Reservar por WhatsApp
         </a>
-        <a href="#servicios" class="boton boton-fantasma">Ver paquetes</a>
+        <a href="#servicios" class="inline-flex items-center gap-2 border border-crema/40 hover:border-dorado text-crema hover:text-dorado font-semibold px-6 py-3 rounded-md transition-all duration-200 hover:-translate-y-1">Ver paquetes</a>
       </div>
     </div>
   </section>
 
   <!-- ============ SOBRE NOSOTROS ============ -->
-  <section class="superficie-lino" id="nosotros">
-    <div class="contenedor sobre">
-      <div class="sobre__ilustracion">
-        <svg viewBox="0 0 320 260" role="img" aria-label="Ilustración de un trío de mariachis">
+  <section class="bg-lino py-14 sm:py-20" id="nosotros">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <div class="bg-noche rounded-xl p-6 sm:p-8">
+        <svg viewBox="0 0 320 260" class="w-full" role="img" aria-label="Ilustración de un trío de mariachis">
           <rect width="320" height="260" fill="#1C1830"/>
           <g fill="#D4A73C" opacity="0.7">
             <circle cx="40" cy="30" r="1.6"/><circle cx="80" cy="18" r="1.4"/><circle cx="260" cy="24" r="1.6"/>
             <circle cx="290" cy="46" r="1.3"/><circle cx="220" cy="16" r="1.3"/><circle cx="140" cy="14" r="1.4"/>
           </g>
-          <g transform="translate(60,90)">
-            <circle cx="0" cy="0" r="16" fill="#F3EEE2"/>
-            <path d="M-22,120 Q-22,40 0,34 Q22,40 22,120 Z" fill="#241F38"/>
-            <rect x="-4" y="45" width="8" height="70" fill="#D4A73C"/>
-          </g>
-          <g transform="translate(160,78)">
-            <circle cx="0" cy="0" r="18" fill="#F3EEE2"/>
-            <path d="M-25,132 Q-25,44 0,38 Q25,44 25,132 Z" fill="#241F38"/>
-            <ellipse cx="0" cy="80" rx="20" ry="26" fill="#9A2B3B" opacity="0.85"/>
-          </g>
-          <g transform="translate(258,94)">
-            <circle cx="0" cy="0" r="15" fill="#F3EEE2"/>
-            <path d="M-20,116 Q-20,38 0,32 Q20,38 20,116 Z" fill="#241F38"/>
-            <rect x="0" y="30" width="34" height="6" fill="#D4A73C" transform="rotate(20)"/>
-          </g>
+          <g transform="translate(60,90)"><circle cx="0" cy="0" r="16" fill="#F3EEE2"/><path d="M-22,120 Q-22,40 0,34 Q22,40 22,120 Z" fill="#241F38"/><rect x="-4" y="45" width="8" height="70" fill="#D4A73C"/></g>
+          <g transform="translate(160,78)"><circle cx="0" cy="0" r="18" fill="#F3EEE2"/><path d="M-25,132 Q-25,44 0,38 Q25,44 25,132 Z" fill="#241F38"/><ellipse cx="0" cy="80" rx="20" ry="26" fill="#9A2B3B" opacity="0.85"/></g>
+          <g transform="translate(258,94)"><circle cx="0" cy="0" r="15" fill="#F3EEE2"/><path d="M-20,116 Q-20,38 0,32 Q20,38 20,116 Z" fill="#241F38"/><rect x="0" y="30" width="34" height="6" fill="#D4A73C" transform="rotate(20)"/></g>
         </svg>
       </div>
-      <div class="sobre__texto">
-        <p class="ojo-etiqueta">Nuestra historia</p>
-        <h2>Más de una década llevando música a los momentos que se recuerdan</h2>
-        <p>Somos un grupo de mariachi con base en la Región de O'Higgins, dedicados a hacer de cada serenata, matrimonio y celebración algo inolvidable. Interpretamos rancheras, boleros y los clásicos de siempre, con el respeto y la puntualidad que cada evento merece.</p>
-        <p>Cada presentación se prepara a la medida: el repertorio, la duración y el estilo se conversan antes, para que el resultado sea exactamente lo que imaginaste.</p>
-        <a href="#reservar" class="boton boton-fantasma-oscuro">Conversemos tu evento</a>
+      <div>
+        <p class="text-vino font-semibold text-xs tracking-widest uppercase mb-3">Nuestra historia</p>
+        <h2 class="font-display text-3xl sm:text-4xl text-tinta leading-snug mb-4">Más de una década llevando música a los momentos que se recuerdan</h2>
+        <p class="text-tinta-suave mb-3 text-sm sm:text-base">Somos un grupo de mariachi con base en la Región de O'Higgins, dedicados a hacer de cada serenata, matrimonio y celebración algo inolvidable. Interpretamos rancheras, boleros y los clásicos de siempre, con el respeto y la puntualidad que cada evento merece.</p>
+        <p class="text-tinta-suave mb-6 text-sm sm:text-base">Cada presentación se prepara a la medida: el repertorio, la duración y el estilo se conversan antes, para que el resultado sea exactamente lo que imaginaste.</p>
+        <a href="#reservar" class="inline-flex items-center gap-2 border border-tinta-suave hover:border-vino text-tinta hover:text-vino font-semibold px-5 py-2.5 rounded-md transition-all duration-200 hover:-translate-y-0.5">Conversemos tu evento</a>
       </div>
     </div>
   </section>
 
   <!-- ============ SERVICIOS / PAQUETES ============ -->
-  <section class="superficie-noche" id="servicios">
-    <div class="contenedor">
-      <div class="encabezado-seccion centrado">
-        <p class="ojo-etiqueta">Paquetes</p>
-        <h2>Un paquete para cada ocasión</h2>
-        <p>Precios referenciales — se pueden ajustar según duración, repertorio y ubicación.</p>
+  <section class="bg-noche py-14 sm:py-20" id="servicios">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <p class="text-dorado font-semibold text-xs tracking-widest uppercase mb-2">Paquetes</p>
+        <h2 class="font-display text-3xl sm:text-4xl text-crema mb-2">Un paquete para cada ocasión</h2>
+        <p class="text-crema/70 text-sm sm:text-base">Precios referenciales — se pueden ajustar según duración, repertorio y ubicación.</p>
       </div>
-      <div class="grilla-paquetes" id="grilla-paquetes">
-        <!-- Se llena dinámicamente desde /api/paquetes -->
-      </div>
+      <div class="grilla-paquetes" id="grilla-paquetes"><!-- se llena por JS --></div>
     </div>
   </section>
 
   <!-- ============ GALERÍA ============ -->
-  <section class="superficie-lino" id="galeria">
-    <div class="contenedor">
-      <div class="encabezado-seccion centrado">
-        <p class="ojo-etiqueta">Galería</p>
-        <h2>Momentos que hemos hecho sonar</h2>
+  <section class="bg-lino py-14 sm:py-20" id="galeria">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <p class="text-vino font-semibold text-xs tracking-widest uppercase mb-2">Galería</p>
+        <h2 class="font-display text-3xl sm:text-4xl text-tinta mb-2">Momentos que hemos hecho sonar</h2>
       </div>
-      <div class="grilla-galeria" id="grilla-galeria">
-        <!-- Se llena dinámicamente desde /api/galeria -->
-      </div>
+      <div class="grilla-galeria" id="grilla-galeria"><!-- se llena por JS --></div>
     </div>
   </section>
+
 
   <!-- ============ TESTIMONIOS ============ -->
   <section class="superficie-noche" id="testimonios">
@@ -150,20 +166,31 @@
 
       <div class="testimonio-form-wrap">
         <h3 style="color:var(--color-crema); margin-bottom:0.2em;">¿Ya celebraste con nosotros?</h3>
-        <p style="color:rgba(243,238,226,0.75); font-size:0.94rem;">Cuéntanos cómo fue tu experiencia.</p>
-        <form id="form-testimonio" novalidate>
-          <div class="campo-fila campo-fila--2">
-            <div class="campo">
-              <label for="t-nombre">Tu nombre</label>
-              <input type="text" id="t-nombre" name="nombre" required maxlength="100">
+  <!-- ============ TESTIMONIOS ============ -->
+  <section class="bg-noche py-14 sm:py-20" id="testimonios">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <p class="text-dorado font-semibold text-xs tracking-widest uppercase mb-2">Testimonios</p>
+        <h2 class="font-display text-3xl sm:text-4xl text-crema">Lo que dicen quienes ya celebraron con nosotros</h2>
+      </div>
+      <div class="grilla-testimonios" id="grilla-testimonios"><!-- se llena por JS --></div>
+
+      <div class="max-w-lg mx-auto mt-12 bg-noche-suave border border-noche-borde rounded-xl p-6 sm:p-8">
+        <h3 class="font-display text-crema text-xl mb-1">¿Ya celebraste con nosotros?</h3>
+        <p class="text-crema/70 text-sm mb-5">Cuéntanos cómo fue tu experiencia.</p>
+        <form id="form-testimonio" novalidate class="campo-oscuro">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-sm font-semibold mb-1" for="t-nombre">Tu nombre</label>
+              <input type="text" id="t-nombre" name="nombre" required maxlength="100" class="w-full px-3 py-2.5 rounded-md border text-sm transition-colors">
             </div>
-            <div class="campo">
-              <label for="t-comuna">Tu comuna</label>
-              <input type="text" id="t-comuna" name="comuna" maxlength="60">
+            <div>
+              <label class="block text-sm font-semibold mb-1" for="t-comuna">Tu comuna</label>
+              <input type="text" id="t-comuna" name="comuna" maxlength="60" class="w-full px-3 py-2.5 rounded-md border text-sm transition-colors">
             </div>
           </div>
-          <div class="campo">
-            <label>Calificación</label>
+          <div class="mb-4">
+            <label class="block text-crema/85 text-sm font-semibold mb-2">Calificación</label>
             <div class="estrellas-elegir" id="estrellas-elegir" role="radiogroup" aria-label="Calificación de 1 a 5 estrellas">
               <button type="button" data-valor="1" aria-label="1 estrella">★</button>
               <button type="button" data-valor="2" aria-label="2 estrellas">★</button>
@@ -173,11 +200,11 @@
             </div>
             <input type="hidden" id="t-calificacion" name="calificacion" value="5">
           </div>
-          <div class="campo">
-            <label for="t-comentario">Tu comentario</label>
-            <textarea id="t-comentario" name="comentario" rows="3" required maxlength="500"></textarea>
+          <div class="mb-5">
+            <label class="block text-sm font-semibold mb-1" for="t-comentario">Tu comentario</label>
+            <textarea id="t-comentario" name="comentario" rows="3" required maxlength="500" class="w-full px-3 py-2.5 rounded-md border text-sm transition-colors resize-none"></textarea>
           </div>
-          <button type="submit" class="boton boton-dorado">Enviar comentario</button>
+          <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-dorado hover:bg-dorado-suave text-noche font-semibold px-6 py-2.5 rounded-md transition-all duration-200 hover:-translate-y-0.5">Enviar comentario</button>
           <div class="mensaje-formulario" id="mensaje-testimonio" hidden></div>
         </form>
       </div>
@@ -185,82 +212,78 @@
   </section>
 
   <!-- ============ RESERVAR ============ -->
-  <section class="superficie-lino" id="reservar">
-    <div class="contenedor">
-      <div class="encabezado-seccion centrado">
-        <p class="ojo-etiqueta">Reservar</p>
-        <h2>Cuéntanos de tu evento</h2>
-        <p>Completa el formulario y te contactaremos para confirmar disponibilidad y coordinar los detalles.</p>
+  <section class="bg-lino py-14 sm:py-20" id="reservar">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <p class="text-vino font-semibold text-xs tracking-widest uppercase mb-2">Reservar</p>
+        <h2 class="font-display text-3xl sm:text-4xl text-tinta mb-2">Cuéntanos de tu evento</h2>
+        <p class="text-tinta-suave text-sm sm:text-base">Completa el formulario y te contactaremos para confirmar disponibilidad y coordinar los detalles.</p>
       </div>
 
-      <div class="reservar-grid">
+      <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-start">
         <form id="form-reserva" novalidate>
-          <div class="campo-fila campo-fila--2">
-            <div class="campo">
-              <label for="r-nombre">Nombre completo *</label>
-              <input type="text" id="r-nombre" name="nombre_cliente" required maxlength="100">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-sm font-semibold text-tinta mb-1" for="r-nombre">Nombre completo *</label>
+              <input type="text" id="r-nombre" name="nombre_cliente" required maxlength="100" class="w-full px-3 py-2.5 rounded-md border border-gray-300 text-sm focus:outline-none focus:border-dorado transition-colors">
             </div>
-            <div class="campo">
-              <label for="r-telefono">Teléfono *</label>
-              <input type="tel" id="r-telefono" name="telefono" required maxlength="20" placeholder="+56 9 1234 5678">
-            </div>
-          </div>
-          <div class="campo-fila campo-fila--2">
-            <div class="campo">
-              <label for="r-email">Correo electrónico</label>
-              <input type="email" id="r-email" name="email" maxlength="120">
-            </div>
-            <div class="campo">
-              <label for="r-comuna">Comuna del evento</label>
-              <input type="text" id="r-comuna" name="comuna" maxlength="60">
+            <div>
+              <label class="block text-sm font-semibold text-tinta mb-1" for="r-telefono">Teléfono *</label>
+              <input type="tel" id="r-telefono" name="telefono" required maxlength="20" placeholder="+56 9 1234 5678" class="w-full px-3 py-2.5 rounded-md border border-gray-300 text-sm focus:outline-none focus:border-dorado transition-colors">
             </div>
           </div>
-          <div class="campo-fila campo-fila--2">
-            <div class="campo">
-              <label for="r-tipo">Tipo de evento *</label>
-              <select id="r-tipo" name="tipo_evento" required>
-                <option value="">Selecciona una opción</option>
-                <option>Serenata</option>
-                <option>Matrimonio</option>
-                <option>Cumpleaños</option>
-                <option>Aniversario</option>
-                <option>Evento corporativo</option>
-                <option>Otro</option>
-              </select>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-sm font-semibold text-tinta mb-1" for="r-email">Correo electrónico</label>
+              <input type="email" id="r-email" name="email" maxlength="120" class="w-full px-3 py-2.5 rounded-md border border-gray-300 text-sm focus:outline-none focus:border-dorado transition-colors">
             </div>
-            <div class="campo">
-              <label for="r-paquete">Paquete de interés</label>
-              <select id="r-paquete" name="paquete_id">
-                <option value="">Aún no sé / a definir</option>
-              </select>
+            <div>
+              <label class="block text-sm font-semibold text-tinta mb-1" for="r-comuna">Comuna del evento</label>
+              <input type="text" id="r-comuna" name="comuna" maxlength="60" class="w-full px-3 py-2.5 rounded-md border border-gray-300 text-sm focus:outline-none focus:border-dorado transition-colors">
             </div>
           </div>
-          <div class="campo-fila campo-fila--2">
-            <div class="campo">
-              <label for="r-fecha">Fecha del evento *</label>
-              <input type="date" id="r-fecha" name="fecha_evento" required>
-            </div>
-            <div class="campo">
-              <label for="r-hora">Hora aproximada</label>
-              <input type="time" id="r-hora" name="hora_evento">
+          <div class="mb-4">
+            <label class="block text-sm font-semibold text-tinta mb-1" for="r-tipo">Tipo de evento *</label>
+            <select id="r-tipo" name="tipo_evento" required class="w-full px-3 py-2.5 rounded-md border border-gray-300 text-sm focus:outline-none focus:border-dorado transition-colors bg-white text-tinta">
+              <option value="">Selecciona una opción</option>
+              <option>Serenata</option>
+              <option>Matrimonio</option>
+              <option>Cumpleaños</option>
+              <option>Aniversario</option>
+              <option>Evento corporativo</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-semibold text-tinta mb-1">Paquete de interés</label>
+            <div class="paquetes-elegir" id="paquetes-elegir" role="radiogroup">
+              <label class="paquete-radio"><input type="radio" name="paquete_id" value="" checked><span class="paquete-radio__contenido">Aún no sé / a definir</span></label>
             </div>
           </div>
-          <div class="campo">
-            <label for="r-mensaje">Cuéntanos más (opcional)</label>
-            <textarea id="r-mensaje" name="mensaje" rows="3" maxlength="500" placeholder="Canciones especiales, lugar exacto, sorpresa, etc."></textarea>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-sm font-semibold text-tinta mb-1" for="r-fecha">Fecha del evento *</label>
+              <input type="date" id="r-fecha" name="fecha_evento" required class="w-full px-3 py-2.5 rounded-md border border-gray-300 text-sm focus:outline-none focus:border-dorado transition-colors">
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-tinta mb-1" for="r-hora">Hora aproximada</label>
+              <input type="time" id="r-hora" name="hora_evento" class="w-full px-3 py-2.5 rounded-md border border-gray-300 text-sm focus:outline-none focus:border-dorado transition-colors">
+            </div>
           </div>
-          <button type="submit" class="boton boton-dorado">Enviar solicitud de reserva</button>
+          <div class="mb-5">
+            <label class="block text-sm font-semibold text-tinta mb-1" for="r-mensaje">Cuéntanos más (opcional)</label>
+            <textarea id="r-mensaje" name="mensaje" rows="3" maxlength="500" placeholder="Canciones especiales, lugar exacto, sorpresa, etc." class="w-full px-3 py-2.5 rounded-md border border-gray-300 text-sm focus:outline-none focus:border-dorado transition-colors resize-none"></textarea>
+          </div>
+          <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-dorado hover:bg-dorado-suave text-noche font-semibold px-8 py-3 rounded-md transition-all duration-200 hover:-translate-y-0.5 hover:shadow-card">Enviar solicitud de reserva</button>
           <div class="mensaje-formulario" id="mensaje-reserva" hidden></div>
         </form>
 
-        <aside class="reservar-panel">
-          <h3>¿Prefieres coordinar directo?</h3>
-          <p style="color:rgba(243,238,226,0.85);">Escríbenos por WhatsApp y te respondemos a la brevedad.</p>
-          <div class="reservar-panel__whatsapp">
-            <a href="#" class="boton boton-dorado" id="whatsapp-panel-link" target="_blank" rel="noopener">Abrir WhatsApp</a>
-          </div>
-          <h3 style="margin-top:2em;">Zona de cobertura</h3>
-          <ul id="lista-comunas"><!-- se llena por JS --></ul>
+        <aside class="bg-noche text-crema rounded-xl p-6 sm:p-8 h-fit">
+          <h3 class="font-display text-dorado text-lg mb-2">¿Prefieres coordinar directo?</h3>
+          <p class="text-crema/80 text-sm mb-5">Escríbenos por WhatsApp y te respondemos a la brevedad.</p>
+          <a href="#" id="whatsapp-panel-link" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-dorado hover:bg-dorado-suave text-noche font-semibold px-5 py-2.5 rounded-md transition-all duration-200 hover:-translate-y-0.5">Abrir WhatsApp</a>
+          <h3 class="font-display text-dorado text-lg mt-8 mb-3">Zona de cobertura</h3>
+          <ul id="lista-comunas" class="text-crema/80 text-sm space-y-1 list-disc list-inside"><!-- se llena por JS --></ul>
         </aside>
       </div>
     </div>
@@ -269,32 +292,32 @@
 </main>
 
 <!-- ============ PIE DE PÁGINA ============ -->
-<footer class="pie">
-  <div class="contenedor">
-    <div class="pie__grid">
+<footer class="bg-noche text-crema/75 pt-12 pb-6">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
       <div>
-        <p class="pie__nombre" data-site="nombreGrupo">La mariachi del valle de Colchagua</p>
-        <p style="max-width:320px;">Música en vivo para bodas, cumpleaños, serenatas y celebraciones en toda la Región de O'Higgins.</p>
-        <div class="pie__redes" id="pie-redes"><!-- se llena por JS --></div>
+        <p class="font-display text-crema text-xl mb-2" data-site="nombreGrupo">La mariachi del valle de Colchagua</p>
+        <p class="text-sm max-w-xs">Música en vivo para bodas, cumpleaños, serenatas y celebraciones en toda la Región de O'Higgins.</p>
+        <div class="flex gap-3 mt-4" id="pie-redes"><!-- se llena por JS --></div>
       </div>
       <div>
-        <h4>Navegación</h4>
-        <ul>
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#galeria">Galería</a></li>
-          <li><a href="#testimonios">Testimonios</a></li>
-          <li><a href="#reservar">Reservar</a></li>
+        <h4 class="text-crema text-xs font-semibold tracking-widest uppercase mb-4">Navegación</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#servicios" class="hover:text-dorado transition-colors">Servicios</a></li>
+          <li><a href="#galeria" class="hover:text-dorado transition-colors">Galería</a></li>
+          <li><a href="#testimonios" class="hover:text-dorado transition-colors">Testimonios</a></li>
+          <li><a href="#reservar" class="hover:text-dorado transition-colors">Reservar</a></li>
         </ul>
       </div>
       <div>
-        <h4>Contacto</h4>
-        <ul>
-          <li id="pie-whatsapp-item"><a href="#" id="whatsapp-pie-link" target="_blank" rel="noopener">WhatsApp</a></li>
-          <li id="pie-email-item"><a href="#" id="email-pie-link">Correo</a></li>
+        <h4 class="text-crema text-xs font-semibold tracking-widest uppercase mb-4">Contacto</h4>
+        <ul class="space-y-2 text-sm">
+          <li id="pie-whatsapp-item"><a href="#" id="whatsapp-pie-link" target="_blank" rel="noopener" class="hover:text-dorado transition-colors">WhatsApp</a></li>
+          <li id="pie-email-item"><a href="#" id="email-pie-link" class="hover:text-dorado transition-colors">Correo</a></li>
         </ul>
       </div>
     </div>
-    <div class="pie__base">
+    <div class="border-t border-white/10 pt-5 flex flex-col sm:flex-row justify-between gap-2 text-xs">
       <span>© <span id="anio-actual"></span> <span data-site="nombreGrupo">La mariachi del valle de Colchagua</span>. Todos los derechos reservados.</span>
       <span>Hecho con ♪ en la Región de O'Higgins</span>
     </div>
