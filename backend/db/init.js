@@ -41,6 +41,7 @@ async function init() {
       paquete_id INTEGER REFERENCES paquetes(id),
       mensaje TEXT,
       estado TEXT NOT NULL DEFAULT 'pendiente' CHECK (estado IN ('pendiente','confirmada','cancelada','realizada')),
+      consentimiento INTEGER NOT NULL DEFAULT 0,
       creado_en TEXT NOT NULL DEFAULT (datetime('now'))
     )`,
     `CREATE TABLE IF NOT EXISTS testimonios (
@@ -50,6 +51,7 @@ async function init() {
       comentario TEXT NOT NULL,
       calificacion INTEGER NOT NULL CHECK (calificacion BETWEEN 1 AND 5),
       aprobado INTEGER NOT NULL DEFAULT 0,
+      consentimiento INTEGER NOT NULL DEFAULT 0,
       creado_en TEXT NOT NULL DEFAULT (datetime('now'))
     )`,
     `CREATE TABLE IF NOT EXISTS galeria (
@@ -73,6 +75,15 @@ async function init() {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       usuario TEXT NOT NULL UNIQUE,
       password_hash TEXT NOT NULL,
+      password_hash TEXT NOT NULL,
+      creado_en TEXT NOT NULL DEFAULT (datetime('now'))
+    )`,
+    `CREATE TABLE IF NOT EXISTS solicitudes_eliminacion (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      email TEXT,
+      telefono TEXT,
+      tipo TEXT NOT NULL,
+      estado TEXT NOT NULL DEFAULT 'pendiente',
       creado_en TEXT NOT NULL DEFAULT (datetime('now'))
     )`,
     `CREATE INDEX IF NOT EXISTS idx_reservas_fecha ON reservas(fecha_evento)`,

@@ -1,14 +1,15 @@
 :root {
-  --a-noche: #1C1830;
-  --a-noche-suave: #2A2444;
-  --a-dorado: #C9972F;
-  --a-vino: #9A2B3B;
+  --a-noche: #161412; /* var(--negro) */
+  --a-noche-suave: #2a2522;
+  --a-dorado: #c49a45; /* var(--bronce) */
+  --a-dorado-suave: #dfbf78; /* var(--bronce-claro) */
+  --a-vino: #7a2331; /* var(--vino) */
   --a-verde: #2F7A4F;
-  --a-crema: #F3EEE2;
-  --a-fondo: #F6F4EF;
-  --a-borde: #E1DACB;
-  --a-tinta: #241F38;
-  --a-tinta-suave: #6C6485;
+  --a-crema: #f6f0e3; /* var(--marfil) */
+  --a-fondo: #e4dccb; /* var(--plata) pero usado como fondo oscuro en main, aquí lo usaremos como gris de borde */
+  --a-borde: rgba(51,44,37,0.15);
+  --a-tinta: #332c25; /* var(--texto) */
+  --a-tinta-suave: rgba(51,44,37,0.7);
   --a-radio: 8px;
 }
 
@@ -16,7 +17,7 @@
 body {
   margin: 0;
   font-family: "Work Sans", -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--a-fondo);
+  background: var(--a-crema);
   color: var(--a-tinta);
 }
 a { color: inherit; }
@@ -116,7 +117,7 @@ input, select, textarea { font-family: inherit; }
 
 .panel-main { flex-grow: 1; padding: 32px 36px; max-width: 1180px; }
 .panel-main__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
-.panel-main__header h2 { margin: 0; font-size: 1.5rem; }
+.panel-main__header h2 { margin: 0; font-size: 1.8rem; font-family: "Lora", serif; font-weight: 500; }
 .panel-main__usuario { font-size: 0.88rem; color: var(--a-tinta-suave); display: flex; align-items: center; gap: 12px; }
 
 .tab-panel { display: none; }
@@ -125,14 +126,14 @@ input, select, textarea { font-family: inherit; }
 /* ---------- Tarjetas de resumen ---------- */
 .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 30px; }
 .stat-card { background: #fff; border: 1px solid var(--a-borde); border-radius: var(--a-radio); padding: 20px; }
-.stat-card__numero { font-size: 2rem; font-weight: 700; color: var(--a-noche); }
+.stat-card__numero { font-size: 2rem; font-weight: 500; font-family: "Lora", serif; color: var(--a-noche); }
 .stat-card__etiqueta { font-size: 0.86rem; color: var(--a-tinta-suave); }
 
 /* ---------- Tablas ---------- */
 .tabla-wrap { background: #fff; border: 1px solid var(--a-borde); border-radius: var(--a-radio); overflow: hidden; }
 table { width: 100%; border-collapse: collapse; }
 th, td { text-align: left; padding: 12px 14px; font-size: 0.9rem; border-bottom: 1px solid var(--a-borde); vertical-align: middle; }
-th { background: #FAF8F3; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--a-tinta-suave); }
+th { background: rgba(196,154,69,0.1); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--a-tinta); font-weight: 600; }
 tr:last-child td { border-bottom: none; }
 td select { padding: 6px 8px; border-radius: 6px; border: 1.5px solid var(--a-borde); }
 
@@ -169,7 +170,7 @@ td select { padding: 6px 8px; border-radius: 6px; border: 1.5px solid var(--a-bo
 }
 
 /* ---------- Paquetes: tabla editable ---------- */
-.fila-nueva { background: #FAF8F3; }
+.fila-nueva { background: rgba(196,154,69,0.05); }
 .tabla-wrap input[type="text"], .tabla-wrap input[type="number"] {
   width: 100%; padding: 7px 9px; border: 1.5px solid var(--a-borde); border-radius: 6px; font-size: 0.88rem;
 }

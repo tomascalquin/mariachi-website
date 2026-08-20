@@ -58,6 +58,7 @@
   const cargadores = {
     reservas: cargarReservas, testimonios: cargarTestimonios,
     galeria: cargarGaleria, paquetes: cargarPaquetes, mensajes: cargarMensajes,
+    privacidad: cargarPrivacidad
   };
 
   document.querySelectorAll(".tab-link").forEach((btn) => {
@@ -72,15 +73,17 @@
 
   // ---------- Resumen ----------
   async function cargarResumen() {
-    const [reservas, testimonios, mensajes] = await Promise.all([
+    const [reservas, testimonios, mensajes, solicitudesPrivacidad] = await Promise.all([
       apiFetch("/api/reservas").then((r) => r.data).catch(() => []),
       apiFetch("/api/testimonios/admin").then((r) => r.data).catch(() => []),
       apiFetch("/api/contacto").then((r) => r.data).catch(() => []),
+      apiFetch("/api/privacidad/admin/solicitudes").then((r) => r.data).catch(() => []),
     ]);
 
     const pendientes = reservas.filter((r) => r.estado === "pendiente").length;
     const testPendientes = testimonios.filter((t) => !t.aprobado).length;
     const mensajesNoLeidos = mensajes.filter((m) => !m.leido).length;
+    const privPendientes = solicitudesPrivacidad.filter((s) => s.estado === "pendiente").length;
     const proxima = reservas.filter((r) => r.estado !== "cancelada").sort((a, b) => a.fecha_evento.localeCompare(b.fecha_evento))[0];
 
     document.getElementById("stats-grid").innerHTML = `
@@ -93,6 +96,7 @@
     setContador("contador-reservas", pendientes);
     setContador("contador-testimonios", testPendientes);
     setContador("contador-mensajes", mensajesNoLeidos);
+    setContador("contador-privacidad", privPendientes);
   }
 
   function setContador(id, n) {
@@ -115,6 +119,7 @@
         <td>${escapeHTML(r.comuna || "—")}</td>
         <td>${escapeHTML(r.paquete_nombre || "—")}</td>
         <td>${escapeHTML(r.telefono)}${r.email ? `<br><span style="font-size:0.82rem;">${escapeHTML(r.email)}</span>` : ""}</td>
+        <td style="text-align:center;">${r.consentimiento ? "✅" : "—"}</td>
         <td>
           <select class="select-estado">
             ${["pendiente", "confirmada", "realizada", "cancelada"].map((e) => `<option value="${e}" ${e === r.estado ? "selected" : ""}>${e[0].toUpperCase() + e.slice(1)}</option>`).join("")}
@@ -152,7 +157,7 @@
         <div class="tarjeta-item__cuerpo">
           <div class="estrellas-mostrar">${"★".repeat(t.calificacion)}${"☆".repeat(5 - t.calificacion)}</div>
           <p style="margin:6px 0;">${escapeHTML(t.comentario)}</p>
-          <div class="tarjeta-item__meta">${escapeHTML(t.nombre)}${t.comuna ? " · " + escapeHTML(t.comuna) : ""} — ${t.aprobado ? "Publicado" : "Pendiente de aprobación"}</div>
+          <div class="tarjeta-item__meta">${escapeHTML(t.nombre)}${t.comuna ? " · " + escapeHTML(t.comuna) : ""} — ${t.aprobado ? "Publicado" : "Pendiente de aprobación"} ${t.consentimiento ? " · ✅ Consentimiento" : ""}</div>
         </div>
         <div class="tarjeta-item__acciones">
           <button class="boton ${t.aprobado ? "boton-borde" : "boton-dorado"} boton-chico btn-aprobar">${t.aprobado ? "Ocultar" : "Aprobar"}</button>
@@ -317,6 +322,34 @@
         const item = btn.closest(".tarjeta-item");
         const { ok } = await apiFetch(`/api/contacto/${item.dataset.id}/leido`, { method: "PATCH", body: JSON.stringify({ leido: true }) });
         if (ok) { cargarMensajes(); cargarResumen(); }
+      });
+    });
+  }
+
+  // ---------- Privacidad ----------
+  async function cargarPrivacidad() {
+    const { data: solicitudes } = await apiFetch("/api/privacidad/admin/solicitudes");
+    const tbody = document.getElementById("tabla-privacidad-body");
+    document.getElementById("privacidad-vacio").hidden = solicitudes.length > 0;
+
+    tbody.innerHTML = solicitudes.map((s) => `
+      <tr data-id="${s.id}">
+        <td style="text-transform:capitalize;">${escapeHTML(s.tipo)}</td>
+        <td>${escapeHTML(s.email || "")} ${s.telefono ? escapeHTML(s.telefono) : ""}</td>
+        <td>${fmtFecha(s.creado_en)}</td>
+        <td><span class="insignia ${s.estado === 'pendiente' ? 'insignia-pendiente' : 'insignia-confirmada'}">${escapeHTML(s.estado)}</span></td>
+        <td>
+          ${s.estado === "pendiente" ? `<button class="boton boton-dorado boton-chico btn-completar-solicitud">Marcar Completada</button>` : `<span style="color:var(--a-tinta-suave);font-size:0.85rem;">Borrado ✔</span>`}
+        </td>
+      </tr>
+    `).join("");
+
+    tbody.querySelectorAll(".btn-completar-solicitud").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const fila = btn.closest("tr");
+        if (!confirm("¿Ya borraste manualmente los datos del cliente correspondientes a esta solicitud?")) return;
+        const { ok } = await apiFetch(`/api/privacidad/admin/solicitudes/${fila.dataset.id}/estado`, { method: "PATCH", body: JSON.stringify({ estado: "completada" }) });
+        if (ok) { cargarPrivacidad(); cargarResumen(); }
       });
     });
   }

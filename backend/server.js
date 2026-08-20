@@ -56,6 +56,7 @@ app.use('/api/testimonios', testimoniosRoutes);
 app.use('/api/galeria', galeriaRoutes);
 app.use('/api/paquetes', paquetesRoutes);
 app.use('/api/contacto', contactoRoutes);
+app.use('/api/privacidad', privacidadRoutes);
 
 // Panel de administración (estático)
 app.use('/admin', express.static(path.join(__dirname, '../admin')));

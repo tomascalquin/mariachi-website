@@ -19,6 +19,7 @@ router.post('/',
   body('hora_evento').optional({ checkFalsy: true }).trim().isLength({ max: 20 }).escape(),
   body('paquete_id').optional({ checkFalsy: true }).isInt(),
   body('mensaje').optional({ checkFalsy: true }).trim().isLength({ max: 500 }).escape(),
+  body('consentimiento').isBoolean().custom((val) => val === true || val === 'true'),
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -26,10 +27,10 @@ router.post('/',
     }
 
     try {
-      const { nombre_cliente, telefono, email, comuna, tipo_evento, fecha_evento, hora_evento, paquete_id, mensaje } = req.body;
+      const { nombre_cliente, telefono, email, comuna, tipo_evento, fecha_evento, hora_evento, paquete_id, mensaje, consentimiento } = req.body;
       const result = await db.execute({
-        sql: 'INSERT INTO reservas (nombre_cliente, telefono, email, comuna, tipo_evento, fecha_evento, hora_evento, paquete_id, mensaje) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-        args: [nombre_cliente, telefono, email || null, comuna || null, tipo_evento, fecha_evento, hora_evento || null, paquete_id || null, mensaje || null],
+        sql: 'INSERT INTO reservas (nombre_cliente, telefono, email, comuna, tipo_evento, fecha_evento, hora_evento, paquete_id, mensaje, consentimiento) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+        args: [nombre_cliente, telefono, email || null, comuna || null, tipo_evento, fecha_evento, hora_evento || null, paquete_id || null, mensaje || null, consentimiento === true || consentimiento === 'true' ? 1 : 0],
       });
       res.status(201).json({ ok: true, id: Number(result.lastInsertRowid), mensaje: '¡Gracias! Te contactaremos pronto para confirmar.' });
     } catch (err) {

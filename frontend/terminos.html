@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Términos de Uso — La mariachi del valle de Colchagua</title>
+  <meta name="description" content="Términos y condiciones de uso del sitio web de La mariachi del valle de Colchagua.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Estilos específicos de la página legal ── */
+    .legal-hero {
+      background: var(--negro);
+      color: var(--marfil);
+      padding: 4rem 1.8rem 3rem;
+      border-bottom: 3px solid var(--bronce);
+    }
+    .legal-hero-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .legal-hero .marca-chica {
+      color: var(--bronce-claro);
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+    .legal-hero .marca-chica::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--bronce);
+      flex-shrink: 0;
+    }
+    .legal-hero h1 {
+      font-size: clamp(26px, 4vw, 42px);
+      line-height: 1.15;
+      font-weight: 500;
+      color: var(--marfil);
+      margin-bottom: .8rem;
+    }
+    .legal-meta {
+      font-size: 13px;
+      color: rgba(228,220,203,.55);
+      letter-spacing: .04em;
+    }
+
+    /* ── Cuerpo del documento legal ── */
+    .legal-body {
+      background: var(--marfil);
+      padding: 4rem 1.8rem 5rem;
+    }
+    .legal-container {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* Índice */
+    .legal-toc {
+      background: var(--marfil-panel);
+      border-left: 3px solid var(--bronce);
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 3rem;
+    }
+    .legal-toc p {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-weight: 700;
+      color: var(--bronce);
+      margin-bottom: .8rem;
+    }
+    .legal-toc ol {
+      list-style: none;
+      counter-reset: toc;
+      display: flex;
+      flex-direction: column;
+      gap: .3rem;
+    }
+    .legal-toc ol li {
+      counter-increment: toc;
+      font-size: 14px;
+      color: var(--texto-suave);
+    }
+    .legal-toc ol li::before {
+      content: counter(toc) ". ";
+      color: var(--bronce);
+      font-weight: 700;
+    }
+    .legal-toc a {
+      color: var(--texto-suave);
+      border-bottom: 1px solid transparent;
+      transition: color .2s, border-color .2s;
+    }
+    .legal-toc a:hover {
+      color: var(--vino);
+      border-color: var(--vino);
+    }
+
+    /* Secciones */
+    .legal-section {
+      margin-bottom: 2.8rem;
+      padding-bottom: 2.8rem;
+      border-bottom: 1px solid rgba(51,44,37,.1);
+    }
+    .legal-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    .legal-section h2 {
+      font-size: clamp(18px, 2.4vw, 22px);
+      color: var(--negro);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: baseline;
+      gap: .7rem;
+    }
+    .legal-section h2 .num {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      color: var(--bronce);
+      flex-shrink: 0;
+    }
+    .legal-section p {
+      font-size: 15.5px;
+      color: var(--texto-suave);
+      line-height: 1.75;
+      margin-bottom: .9rem;
+    }
+    .legal-section p:last-child { margin-bottom: 0; }
+    .legal-section ul, .legal-section ol {
+      padding-left: 1.4rem;
+      margin: .6rem 0 .9rem;
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+    }
+    .legal-section li {
+      font-size: 15px;
+      color: var(--texto-suave);
+      line-height: 1.7;
+    }
+    .legal-section strong {
+      color: var(--negro);
+      font-weight: 600;
+    }
+
+    /* Caja de alerta / aviso */
+    .legal-aviso {
+      background: rgba(122,35,49,.07);
+      border-left: 3px solid var(--vino);
+      padding: 1rem 1.3rem;
+      margin: 1.2rem 0;
+      font-size: 14.5px;
+      color: var(--texto);
+      line-height: 1.65;
+    }
+
+    /* Contacto destacado */
+    .legal-contacto-box {
+      background: var(--negro);
+      color: var(--marfil);
+      padding: 1.8rem 2rem;
+      margin-top: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .legal-contacto-box p {
+      color: rgba(228,220,203,.85) !important;
+      font-size: 14.5px !important;
+      margin: 0 !important;
+    }
+    .legal-contacto-box a.btn-volver {
+      background: var(--vino);
+      color: var(--marfil);
+      padding: .7rem 1.6rem;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      white-space: nowrap;
+      transition: background .25s;
+      display: inline-block;
+    }
+    .legal-contacto-box a.btn-volver:hover {
+      background: var(--vino-claro);
+    }
+
+    /* Botón volver */
+    .btn-volver-inicio {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--texto-suave);
+      border-bottom: 1px solid rgba(51,44,37,.25);
+      padding-bottom: 2px;
+      transition: color .2s, border-color .2s;
+      margin-bottom: 2rem;
+      display: block;
+      width: fit-content;
+    }
+    .btn-volver-inicio:hover {
+      color: var(--vino);
+      border-color: var(--vino);
+    }
+    .btn-volver-inicio svg {
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ TOPBAR (heredado del sitio) ============ -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-brand">Mariachi <em>del Valle</em> de Colchagua</div>
+      <nav>
+        <ul class="topbar-nav">
+          <li><a href="index.html#nosotros">Nosotros</a></li>
+          <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="index.html#galeria">Galería</a></li>
+          <li><a href="index.html#reservar">Reservar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ============ HERO LEGAL ============ -->
+  <header class="legal-hero">
+    <div class="legal-hero-inner">
+      <div class="marca-chica">Documento legal</div>
+      <h1>Términos y Condiciones de Uso</h1>
+      <p class="legal-meta">Última actualización: agosto 2026 &nbsp;·&nbsp; Versión 1.0</p>
+    </div>
+  </header>
+
+  <!-- ============ CUERPO ============ -->
+  <main class="legal-body">
+    <div class="legal-container">
+
+      <a href="index.html" class="btn-volver-inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Volver al sitio
+      </a>
+
+      <!-- ÍNDICE -->
+      <div class="legal-toc">
+        <p>Contenido</p>
+        <ol>
+          <li><a href="#aceptacion">Aceptación de los términos</a></li>
+          <li><a href="#uso">Uso del sitio web</a></li>
+          <li><a href="#reservas">Proceso de reserva y contratación</a></li>
+          <li><a href="#propiedad">Propiedad intelectual</a></li>
+          <li><a href="#limitacion">Limitación de responsabilidad</a></li>
+          <li><a href="#enlaces">Enlaces a terceros</a></li>
+          <li><a href="#modificaciones">Modificaciones a los términos</a></li>
+          <li><a href="#legislacion">Legislación aplicable y jurisdicción</a></li>
+        </ol>
+      </div>
+
+      <!-- 1. Aceptacion -->
+      <div class="legal-section" id="aceptacion">
+        <h2><span class="num">01</span>Aceptación de los términos</h2>
+        <p>
+          Al acceder y utilizar el sitio web de <strong>La mariachi del valle de Colchagua</strong>, usted acepta estar sujeto a estos Términos y Condiciones de Uso, todas las leyes y regulaciones aplicables, y acepta que es responsable del cumplimiento de las leyes locales aplicables. Si no está de acuerdo con alguno de estos términos, tiene prohibido usar o acceder a este sitio.
+        </p>
+      </div>
+
+      <!-- 2. Uso -->
+      <div class="legal-section" id="uso">
+        <h2><span class="num">02</span>Uso del sitio web</h2>
+        <p>
+          El contenido de este sitio web es únicamente para información general y para facilitar la solicitud de nuestros servicios musicales. Usted se compromete a:
+        </p>
+        <ul>
+          <li>Proporcionar información verdadera, exacta, actual y completa al utilizar nuestros formularios.</li>
+          <li>No utilizar el sitio de ninguna forma que pueda dañar, deshabilitar, sobrecargar o deteriorar nuestros servidores o redes.</li>
+          <li>No intentar obtener acceso no autorizado a ninguna parte del sitio, otras cuentas, sistemas informáticos o redes conectadas a nuestro sitio web.</li>
+        </ul>
+      </div>
+
+      <!-- 3. Reservas -->
+      <div class="legal-section" id="reservas">
+        <h2><span class="num">03</span>Proceso de reserva y contratación</h2>
+        <p>
+          El envío de una solicitud a través de nuestro "Formulario de Reserva" no constituye un contrato vinculante. La reserva del servicio solo se considera confirmada una vez que nos hayamos puesto en contacto con usted, acordado los detalles (fecha, hora, lugar, repertorio, precio) y, si aplica, recibido el anticipo o seña acordada.
+        </p>
+        <div class="legal-aviso">
+          Nos reservamos el derecho de rechazar cualquier solicitud de reserva por falta de disponibilidad, imposibilidad de traslado o cualquier otra razón que impida la correcta prestación del servicio.
+        </div>
+      </div>
+
+      <!-- 4. Propiedad -->
+      <div class="legal-section" id="propiedad">
+        <h2><span class="num">04</span>Propiedad intelectual</h2>
+        <p>
+          El material contenido en este sitio web (incluyendo textos, imágenes, logotipos, código y diseño) es propiedad de <strong>La mariachi del valle de Colchagua</strong> o de sus respectivos licenciantes, y está protegido por las leyes de derecho de autor y marcas aplicables en Chile y tratados internacionales.
+        </p>
+        <p>
+          Se le concede permiso temporal para descargar una copia de los materiales únicamente para visualización transitoria personal y no comercial. Esta es la concesión de una licencia, no una transferencia de título, y bajo esta licencia no puede modificar ni copiar los materiales, usarlos para ningún propósito comercial, ni intentar descompilar o realizar ingeniería inversa de ningún software contenido en el sitio.
+        </p>
+      </div>
+
+      <!-- 5. Limitación -->
+      <div class="legal-section" id="limitacion">
+        <h2><span class="num">05</span>Limitación de responsabilidad</h2>
+        <p>
+          En ningún caso <strong>La mariachi del valle de Colchagua</strong> será responsable de ningún daño (incluyendo, sin limitación, daños por pérdida de datos o beneficios, o debido a la interrupción del negocio) que surjan del uso o la imposibilidad de usar los materiales en este sitio web, incluso si hemos sido notificados de la posibilidad de tal daño.
+        </p>
+      </div>
+
+      <!-- 6. Enlaces -->
+      <div class="legal-section" id="enlaces">
+        <h2><span class="num">06</span>Enlaces a terceros</h2>
+        <p>
+          Este sitio puede contener enlaces a sitios web de terceros (como WhatsApp, Facebook, Instagram, YouTube). No somos responsables del contenido ni de las prácticas de privacidad de estos sitios enlazados. El uso de cualquier sitio web vinculado es bajo su propio riesgo.
+        </p>
+      </div>
+
+      <!-- 7. Modificaciones -->
+      <div class="legal-section" id="modificaciones">
+        <h2><span class="num">07</span>Modificaciones a los términos</h2>
+        <p>
+          Podemos revisar estos Términos de Uso en cualquier momento sin previo aviso. Al utilizar este sitio web, usted acepta estar sujeto a la versión actual de estos términos. Le recomendamos revisar esta página periódicamente.
+        </p>
+      </div>
+
+      <!-- 8. Legislación -->
+      <div class="legal-section" id="legislacion">
+        <h2><span class="num">08</span>Legislación aplicable y jurisdicción</h2>
+        <p>
+          Cualquier reclamo relacionado con el sitio web se regirá por las leyes de la República de Chile, sin tener en cuenta sus disposiciones sobre conflictos de leyes. Cualquier disputa que surja se someterá a la jurisdicción exclusiva de los tribunales competentes en Chile.
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ============ PIE DE PÁGINA ============ -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-grid">
+        <div class="footer-item">
+          <p>Grupo</p>
+          <a href="index.html" data-site="nombreGrupo">La mariachi del valle de Colchagua</a>
+        </div>
+        <div class="footer-item">
+          <p>Legal</p>
+          <nav class="footer-nav">
+            <a href="privacidad.html">Política de Privacidad</a>
+            <a href="terminos.html" style="color:var(--vino);">Términos de uso</a>
+          </nav>
+        </div>
+        <div class="footer-item">
+          <p>Contacto</p>
+          <div><a href="#" id="wa-footer" target="_blank" rel="noopener">WhatsApp</a></div>
+          <div><a href="#" id="email-footer">Correo</a></div>
+        </div>
+      </div>
+      <div class="footer-fine">
+        <span>© <span id="anio-actual"></span> La mariachi del valle de Colchagua. Todos los derechos reservados.</span>
+        <span>Ley 19.628 — Chile</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script>
+    // Poblar datos desde config
+    (function() {
+      const cfg = window.SITE_CONFIG || {};
+      const wa = cfg.telefonoWhatsApp
+        ? `https://wa.me/${cfg.telefonoWhatsApp}?text=${encodeURIComponent("Hola, quisiera consultar sobre los términos de uso.")}`
+        : "#";
+      ["legal-wa-link", "wa-footer"].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.href = wa;
+      });
+      if (cfg.email) {
+        const mailLink = document.getElementById("email-footer");
+        if (mailLink) { mailLink.href = `mailto:${cfg.email}`; mailLink.textContent = cfg.email; }
+      }
+      const anio = document.getElementById("anio-actual");
+      if (anio) anio.textContent = new Date().getFullYear();
+      // Topbar scroll
+      const topbar = document.querySelector(".topbar");
+      if (topbar) window.addEventListener("scroll", () => topbar.classList.toggle("scrolled", window.scrollY > 30), { passive: true });
+    })();
+  </script>
+</body>
+</html>

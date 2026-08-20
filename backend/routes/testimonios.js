@@ -29,15 +29,16 @@ router.post('/',
   body('comuna').optional({ checkFalsy: true }).trim().isLength({ max: 60 }).escape(),
   body('comentario').trim().isLength({ min: 5, max: 500 }).escape(),
   body('calificacion').isInt({ min: 1, max: 5 }),
+  body('consentimiento').isBoolean().custom((val) => val === true || val === 'true'),
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(400).json({ error: 'Revisa los datos ingresados' });
 
     try {
-      const { nombre, comuna, comentario, calificacion } = req.body;
+      const { nombre, comuna, comentario, calificacion, consentimiento } = req.body;
       await db.execute({
-        sql: 'INSERT INTO testimonios (nombre, comuna, comentario, calificacion, aprobado) VALUES (?, ?, ?, ?, 0)',
-        args: [nombre, comuna || null, comentario, calificacion],
+        sql: 'INSERT INTO testimonios (nombre, comuna, comentario, calificacion, aprobado, consentimiento) VALUES (?, ?, ?, ?, 0, ?)',
+        args: [nombre, comuna || null, comentario, calificacion, consentimiento === true || consentimiento === 'true' ? 1 : 0],
       });
       res.status(201).json({ ok: true, mensaje: 'Gracias por tu comentario. Se publicará luego de revisarlo.' });
     } catch (err) {

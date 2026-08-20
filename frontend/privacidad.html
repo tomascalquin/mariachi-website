@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidad — La mariachi del valle de Colchagua</title>
+  <meta name="description" content="Política de privacidad y protección de datos personales de La mariachi del valle de Colchagua, conforme a la Ley 19.628 de Chile.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Estilos específicos de la página legal ── */
+    .legal-hero {
+      background: var(--negro);
+      color: var(--marfil);
+      padding: 4rem 1.8rem 3rem;
+      border-bottom: 3px solid var(--bronce);
+    }
+    .legal-hero-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .legal-hero .marca-chica {
+      color: var(--bronce-claro);
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+    .legal-hero .marca-chica::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--bronce);
+      flex-shrink: 0;
+    }
+    .legal-hero h1 {
+      font-size: clamp(26px, 4vw, 42px);
+      line-height: 1.15;
+      font-weight: 500;
+      color: var(--marfil);
+      margin-bottom: .8rem;
+    }
+    .legal-meta {
+      font-size: 13px;
+      color: rgba(228,220,203,.55);
+      letter-spacing: .04em;
+    }
+
+    /* ── Cuerpo del documento legal ── */
+    .legal-body {
+      background: var(--marfil);
+      padding: 4rem 1.8rem 5rem;
+    }
+    .legal-container {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* Índice */
+    .legal-toc {
+      background: var(--marfil-panel);
+      border-left: 3px solid var(--bronce);
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 3rem;
+    }
+    .legal-toc p {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-weight: 700;
+      color: var(--bronce);
+      margin-bottom: .8rem;
+    }
+    .legal-toc ol {
+      list-style: none;
+      counter-reset: toc;
+      display: flex;
+      flex-direction: column;
+      gap: .3rem;
+    }
+    .legal-toc ol li {
+      counter-increment: toc;
+      font-size: 14px;
+      color: var(--texto-suave);
+    }
+    .legal-toc ol li::before {
+      content: counter(toc) ". ";
+      color: var(--bronce);
+      font-weight: 700;
+    }
+    .legal-toc a {
+      color: var(--texto-suave);
+      border-bottom: 1px solid transparent;
+      transition: color .2s, border-color .2s;
+    }
+    .legal-toc a:hover {
+      color: var(--vino);
+      border-color: var(--vino);
+    }
+
+    /* Secciones */
+    .legal-section {
+      margin-bottom: 2.8rem;
+      padding-bottom: 2.8rem;
+      border-bottom: 1px solid rgba(51,44,37,.1);
+    }
+    .legal-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    .legal-section h2 {
+      font-size: clamp(18px, 2.4vw, 22px);
+      color: var(--negro);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: baseline;
+      gap: .7rem;
+    }
+    .legal-section h2 .num {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      color: var(--bronce);
+      flex-shrink: 0;
+    }
+    .legal-section p {
+      font-size: 15.5px;
+      color: var(--texto-suave);
+      line-height: 1.75;
+      margin-bottom: .9rem;
+    }
+    .legal-section p:last-child { margin-bottom: 0; }
+    .legal-section ul, .legal-section ol {
+      padding-left: 1.4rem;
+      margin: .6rem 0 .9rem;
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+    }
+    .legal-section li {
+      font-size: 15px;
+      color: var(--texto-suave);
+      line-height: 1.7;
+    }
+    .legal-section strong {
+      color: var(--negro);
+      font-weight: 600;
+    }
+
+    /* Caja de alerta / aviso */
+    .legal-aviso {
+      background: rgba(122,35,49,.07);
+      border-left: 3px solid var(--vino);
+      padding: 1rem 1.3rem;
+      margin: 1.2rem 0;
+      font-size: 14.5px;
+      color: var(--texto);
+      line-height: 1.65;
+    }
+
+    /* Contacto destacado */
+    .legal-contacto-box {
+      background: var(--negro);
+      color: var(--marfil);
+      padding: 1.8rem 2rem;
+      margin-top: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .legal-contacto-box p {
+      color: rgba(228,220,203,.85) !important;
+      font-size: 14.5px !important;
+      margin: 0 !important;
+    }
+    .legal-contacto-box a.btn-volver {
+      background: var(--vino);
+      color: var(--marfil);
+      padding: .7rem 1.6rem;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      white-space: nowrap;
+      transition: background .25s;
+      display: inline-block;
+    }
+    .legal-contacto-box a.btn-volver:hover {
+      background: var(--vino-claro);
+    }
+
+    /* Botón volver */
+    .btn-volver-inicio {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--texto-suave);
+      border-bottom: 1px solid rgba(51,44,37,.25);
+      padding-bottom: 2px;
+      transition: color .2s, border-color .2s;
+      margin-bottom: 2rem;
+      display: block;
+      width: fit-content;
+    }
+    .btn-volver-inicio:hover {
+      color: var(--vino);
+      border-color: var(--vino);
+    }
+    .btn-volver-inicio svg {
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ TOPBAR (heredado del sitio) ============ -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-brand">Mariachi <em>del Valle</em> de Colchagua</div>
+      <nav>
+        <ul class="topbar-nav">
+          <li><a href="index.html#nosotros">Nosotros</a></li>
+          <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="index.html#galeria">Galería</a></li>
+          <li><a href="index.html#reservar">Reservar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ============ HERO LEGAL ============ -->
+  <header class="legal-hero">
+    <div class="legal-hero-inner">
+      <div class="marca-chica">Documento legal</div>
+      <h1>Política de Privacidad y Protección de Datos</h1>
+      <p class="legal-meta">Última actualización: agosto 2026 &nbsp;·&nbsp; Versión 1.0</p>
+    </div>
+  </header>
+
+  <!-- ============ CUERPO ============ -->
+  <main class="legal-body">
+    <div class="legal-container">
+
+      <a href="index.html" class="btn-volver-inicio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Volver al sitio
+      </a>
+
+      <!-- ÍNDICE -->
+      <div class="legal-toc">
+        <p>Contenido</p>
+        <ol>
+          <li><a href="#responsable">Responsable del tratamiento</a></li>
+          <li><a href="#datos-recopilados">Datos personales que recopilamos</a></li>
+          <li><a href="#finalidad">Finalidad y base legal del tratamiento</a></li>
+          <li><a href="#almacenamiento">Almacenamiento y seguridad</a></li>
+          <li><a href="#comparticion">Compartición con terceros</a></li>
+          <li><a href="#derechos">Derechos del titular de los datos</a></li>
+          <li><a href="#menores">Menores de edad</a></li>
+          <li><a href="#cookies">Cookies y tecnologías similares</a></li>
+          <li><a href="#cambios">Cambios en esta política</a></li>
+          <li><a href="#contacto-legal">Contacto</a></li>
+        </ol>
+      </div>
+
+      <!-- 1. Responsable -->
+      <div class="legal-section" id="responsable">
+        <h2><span class="num">01</span>Responsable del tratamiento</h2>
+        <p>
+          El responsable del tratamiento de los datos personales recogidos a través de este sitio web es
+          <strong>La mariachi del valle de Colchagua</strong>, conjunto musical con base en la Región de O'Higgins, Chile.
+        </p>
+        <p>
+          Para cualquier consulta relacionada con el tratamiento de sus datos puede escribirnos a
+          <strong id="legal-email-ref">nuestro correo de contacto</strong> o por WhatsApp al número publicado en la sección de contacto del sitio.
+        </p>
+      </div>
+
+      <!-- 2. Datos recopilados -->
+      <div class="legal-section" id="datos-recopilados">
+        <h2><span class="num">02</span>Datos personales que recopilamos</h2>
+        <p>Recopilamos únicamente los datos que usted nos proporciona voluntariamente a través de los formularios del sitio web:</p>
+        <ul>
+          <li><strong>Formulario de reserva:</strong> nombre completo, teléfono, correo electrónico, comuna del evento, tipo de evento, fecha y hora estimada, y mensaje opcional.</li>
+          <li><strong>Formulario de testimonio:</strong> nombre, comuna y comentario sobre el servicio recibido.</li>
+        </ul>
+        <p>No recopilamos datos de forma automática (como dirección IP o datos de navegación) salvo los mínimos necesarios para el funcionamiento técnico del servidor.</p>
+      </div>
+
+      <!-- 3. Finalidad -->
+      <div class="legal-section" id="finalidad">
+        <h2><span class="num">03</span>Finalidad y base legal del tratamiento</h2>
+        <p>Sus datos son tratados exclusivamente para las siguientes finalidades:</p>
+        <ul>
+          <li><strong>Gestión de reservas:</strong> contactarle para confirmar disponibilidad, coordinar los detalles del evento y emitir cotizaciones.</li>
+          <li><strong>Publicación de testimonios:</strong> mostrar comentarios en el sitio web (solo tras revisión y aprobación interna).</li>
+          <li><strong>Comunicaciones relacionadas con el servicio:</strong> envío de información que usted ha solicitado explícitamente.</li>
+        </ul>
+        <div class="legal-aviso">
+          <strong>No realizamos marketing directo no solicitado</strong> ni cedemos sus datos a terceros con fines comerciales. Sus datos son usados únicamente para responder a su solicitud.
+        </div>
+        <p>La base legal del tratamiento es el <strong>consentimiento del titular</strong> al completar y enviar el formulario correspondiente, conforme a la <strong>Ley N° 19.628 sobre Protección de la Vida Privada</strong> de la República de Chile.</p>
+      </div>
+
+      <!-- 4. Almacenamiento -->
+      <div class="legal-section" id="almacenamiento">
+        <h2><span class="num">04</span>Almacenamiento y seguridad</h2>
+        <p>
+          Los datos recopilados se almacenan en una base de datos alojada en servidores de acceso restringido.
+          Aplicamos medidas técnicas razonables para proteger la información contra acceso no autorizado, pérdida o divulgación.
+        </p>
+        <p>
+          <strong>Período de retención:</strong> conservamos los datos de reservas durante el tiempo necesario para la prestación del servicio y hasta <strong>2 años</strong> posteriores al evento para efectos de historial y resolución de posibles consultas. Los testimonios publicados pueden mantenerse mientras el sitio web esté activo, y pueden ser eliminados a solicitud del titular.
+        </p>
+      </div>
+
+      <!-- 5. Compartición -->
+      <div class="legal-section" id="comparticion">
+        <h2><span class="num">05</span>Compartición con terceros</h2>
+        <p>No vendemos, cedemos ni compartimos sus datos personales con terceros, excepto en los siguientes casos limitados:</p>
+        <ul>
+          <li><strong>Proveedores de servicios técnicos</strong> necesarios para el funcionamiento del sitio (hosting, correo transaccional), quienes solo acceden a los datos como encargados del tratamiento y bajo obligación de confidencialidad.</li>
+          <li><strong>Obligaciones legales:</strong> cuando la ley chilena así lo exija o en cumplimiento de una orden judicial.</li>
+        </ul>
+        <p>El uso de <strong>WhatsApp</strong> para coordinación de reservas implica el tratamiento de datos bajo las políticas de Meta Platforms, Inc. Le recomendamos revisar la política de privacidad de WhatsApp si tiene dudas al respecto.</p>
+      </div>
+
+      <!-- 6. Derechos -->
+      <div class="legal-section" id="derechos">
+        <h2><span class="num">06</span>Derechos del titular de los datos</h2>
+        <p>Conforme a la Ley N° 19.628, usted tiene derecho a:</p>
+        <ul>
+          <li><strong>Acceso:</strong> solicitar información sobre los datos personales que tenemos sobre usted.</li>
+          <li><strong>Rectificación:</strong> pedir la corrección de datos inexactos o incompletos.</li>
+          <li><strong>Cancelación / Supresión:</strong> solicitar la eliminación de sus datos cuando ya no sean necesarios para la finalidad con que fueron recogidos.</li>
+          <li><strong>Oposición:</strong> oponerse al tratamiento de sus datos en cualquier momento.</li>
+          <li><strong>Portabilidad:</strong> solicitar una copia de sus datos en formato legible.</li>
+        </ul>
+        <p>Para ejercer cualquiera de estos derechos, escríbanos a nuestro correo de contacto indicando su nombre completo y el derecho que desea ejercer. Responderemos en un plazo máximo de <strong>30 días hábiles</strong>.</p>
+        <div class="legal-aviso">
+          Si considera que sus derechos no han sido atendidos, puede presentar una reclamación ante el organismo competente en Chile. A la fecha de publicación de este documento, Chile se encuentra en proceso de modernización de su legislación de protección de datos (Proyecto de Ley sobre Protección de Datos Personales).
+        </div>
+      </div>
+
+      <!-- 7. Menores -->
+      <div class="legal-section" id="menores">
+        <h2><span class="num">07</span>Menores de edad</h2>
+        <p>
+          Nuestros servicios están dirigidos a personas mayores de 18 años. No recopilamos intencionalmente datos personales de menores de edad sin el consentimiento verificable de sus padres o tutores legales.
+          Si detectamos que hemos recibido datos de un menor sin dicho consentimiento, procederemos a su eliminación a la brevedad.
+        </p>
+      </div>
+
+      <!-- 8. Cookies -->
+      <div class="legal-section" id="cookies">
+        <h2><span class="num">08</span>Cookies y tecnologías similares</h2>
+        <p>
+          Este sitio web <strong>no utiliza cookies de seguimiento, publicidad ni analítica de terceros</strong>.
+          Se pueden usar cookies de sesión estrictamente necesarias para el funcionamiento técnico del sitio (por ejemplo, seguridad de formularios), las cuales se eliminan al cerrar el navegador.
+        </p>
+        <p>
+          No integramos servicios de analítica (como Google Analytics) ni píxeles de redes sociales que recopilen datos de navegación de los visitantes.
+        </p>
+      </div>
+
+      <!-- 9. Cambios -->
+      <div class="legal-section" id="cambios">
+        <h2><span class="num">09</span>Cambios en esta política</h2>
+        <p>
+          Podemos actualizar esta Política de Privacidad periódicamente para reflejar cambios en nuestras prácticas o en la legislación aplicable.
+          La versión vigente siempre estará disponible en esta página con la fecha de última actualización indicada en el encabezado.
+        </p>
+        <p>
+          El uso continuado del sitio web tras la publicación de cambios implica la aceptación de la política actualizada.
+          Si los cambios son significativos, lo notificaremos de forma visible en el sitio.
+        </p>
+      </div>
+
+      <!-- 10. Contacto -->
+      <div class="legal-section" id="contacto-legal">
+        <h2><span class="num">10</span>Contacto</h2>
+        <p>Para ejercer sus derechos, resolver dudas sobre esta política o reportar un incidente de seguridad relacionado con sus datos, puede contactarnos por los siguientes medios:</p>
+        <div class="legal-contacto-box">
+          <p id="legal-contacto-texto">Escríbenos directamente y te respondemos a la brevedad.</p>
+          <a href="#" id="legal-wa-link" target="_blank" rel="noopener" class="btn-volver">Abrir WhatsApp</a>
+        </div>
+        <p style="margin-top:1rem;">O por correo electrónico a <a id="legal-email-link" href="#" style="color:var(--vino);border-bottom:1px solid currentColor;">nuestro correo de contacto</a>.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ============ PIE DE PÁGINA ============ -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-grid">
+        <div class="footer-item">
+          <p>Grupo</p>
+          <a href="index.html" data-site="nombreGrupo">La mariachi del valle de Colchagua</a>
+        </div>
+        <div class="footer-item">
+          <p>Legal</p>
+          <nav class="footer-nav">
+            <a href="privacidad.html" style="color:var(--vino);">Política de Privacidad</a>
+            <a href="terminos.html">Términos de uso</a>
+          </nav>
+        </div>
+        <div class="footer-item">
+          <p>Contacto</p>
+          <div><a href="#" id="wa-footer" target="_blank" rel="noopener">WhatsApp</a></div>
+          <div><a href="#" id="email-footer">Correo</a></div>
+        </div>
+      </div>
+      <div class="footer-fine">
+        <span>© <span id="anio-actual"></span> La mariachi del valle de Colchagua. Todos los derechos reservados.</span>
+        <span>Ley 19.628 — Chile</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script>
+    // Poblar datos desde config
+    (function() {
+      const cfg = window.SITE_CONFIG || {};
+      const wa = cfg.telefonoWhatsApp
+        ? `https://wa.me/${cfg.telefonoWhatsApp}?text=${encodeURIComponent("Hola, quisiera consultar sobre mis datos personales.")}`
+        : "#";
+      ["legal-wa-link", "wa-footer"].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.href = wa;
+      });
+      if (cfg.email) {
+        const mailLink = document.getElementById("email-footer");
+        if (mailLink) { mailLink.href = `mailto:${cfg.email}`; mailLink.textContent = cfg.email; }
+        const legalMail = document.getElementById("legal-email-link");
+        if (legalMail) { legalMail.href = `mailto:${cfg.email}`; legalMail.textContent = cfg.email; }
+        const legalRef = document.getElementById("legal-email-ref");
+        if (legalRef) legalRef.textContent = cfg.email;
+      }
+      const anio = document.getElementById("anio-actual");
+      if (anio) anio.textContent = new Date().getFullYear();
+      // Topbar scroll
+      const topbar = document.querySelector(".topbar");
+      if (topbar) window.addEventListener("scroll", () => topbar.classList.toggle("scrolled", window.scrollY > 30), { passive: true });
+    })();
+  </script>
+</body>
+</html>

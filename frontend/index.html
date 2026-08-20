@@ -179,7 +179,7 @@
         <div class="servicios-encabezado">
           <div class="marca-chica">Lo que ofrecemos</div>
           <h2>Un paquete para cada ocasión</h2>
-          <p>Precios referenciales — se pueden ajustar según duración, repertorio y ubicación.</p>
+          <p>Precios referenciales, pueden ajustar según duración, repertorio y ubicación.</p>
         </div>
         <div class="servicios-list">
           <div class="servicio-row">
@@ -267,6 +267,10 @@
               <label for="t-comentario">Tu comentario</label>
               <textarea id="t-comentario" name="comentario" rows="3" required maxlength="500"></textarea>
             </div>
+            <div class="form-group" style="flex-direction:row;align-items:center;gap:10px;margin-bottom:0.5rem;">
+              <input type="checkbox" id="t-consentimiento" name="consentimiento" required style="width:auto;margin:0;">
+              <label for="t-consentimiento" style="margin:0;font-size:12px;text-transform:none;letter-spacing:normal;">Autorizo la publicación de este comentario según la <a href="privacidad.html" target="_blank" style="color:var(--bronce-claro);text-decoration:underline;">Política de Privacidad</a>.</label>
+            </div>
             <button type="submit" class="submit-btn">Enviar comentario</button>
             <div class="mensaje-formulario" id="mensaje-testimonio" hidden></div>
           </form>
@@ -345,6 +349,10 @@
                 <textarea id="r-mensaje" name="mensaje" rows="3" maxlength="500"
                   placeholder="Canciones especiales, lugar exacto, sorpresa, etc."></textarea>
               </div>
+              <div class="form-group" style="flex-direction:row;align-items:center;gap:10px;margin-bottom:0.5rem;">
+                <input type="checkbox" id="r-consentimiento" name="consentimiento" required style="width:auto;margin:0;">
+                <label for="r-consentimiento" style="margin:0;font-size:12px;text-transform:none;letter-spacing:normal;">He leído y acepto la <a href="privacidad.html" target="_blank" style="color:var(--bronce-claro);text-decoration:underline;">Política de Privacidad</a>. Autorizo el uso de mis datos para gestionar mi solicitud de reserva.</label>
+              </div>
               <button type="submit" class="submit-btn">Enviar solicitud de reserva</button>
             </form>
           </div>
@@ -374,16 +382,24 @@
           </nav>
         </div>
         <div class="footer-item">
+          <p>Legal</p>
+          <nav class="footer-nav">
+            <a href="privacidad.html">Política de Privacidad</a>
+            <a href="terminos.html">Términos de uso</a>
+          </nav>
+        </div>
+        <div class="footer-item">
           <p>Contacto</p>
-          <div id="pie-whatsapp-item"><a href="#" id="whatsapp-pie-link" target="_blank" rel="noopener">WhatsApp</a>
-          </div>
+          <div id="pie-whatsapp-item"><a href="#" id="whatsapp-pie-link" target="_blank" rel="noopener">WhatsApp</a></div>
           <div id="pie-email-item"><a href="#" id="email-pie-link">Correo</a></div>
         </div>
       </div>
       <div class="footer-fine">
-        <span>© <span id="anio-actual"></span> <span data-site="nombreGrupo">La mariachi del valle de Colchagua</span>.
-          Todos los derechos reservados.</span>
-        <span>Hecho con ♪ en la Región de O'Higgins</span>
+        <span>© <span id="anio-actual"></span> <span data-site="nombreGrupo">La mariachi del valle de Colchagua</span>. Todos los derechos reservados.</span>
+        <span>
+          <a href="privacidad.html" style="color:inherit;border-bottom:1px solid rgba(84,71,56,.4);transition:color .2s;" onmouseover="this.style.color='var(--vino)'" onmouseout="this.style.color=''">Privacidad</a>
+          &nbsp;·&nbsp; Ley 19.628 Chile &nbsp;·&nbsp; Hecho con ♪
+        </span>
       </div>
     </div>
   </footer>
@@ -397,8 +413,28 @@
     </svg>
   </a>
 
+  <!-- Banner de Privacidad -->
+  <div id="banner-privacidad" style="display:none;position:fixed;bottom:0;left:0;right:0;background:var(--negro);color:var(--marfil);padding:1.2rem;z-index:100;border-top:2px solid var(--vino);font-size:13px;align-items:center;justify-content:center;gap:1.5rem;text-align:center;">
+    <p style="margin:0;max-width:800px;line-height:1.5;">Al utilizar este sitio web y enviar nuestros formularios, confirmas que has leído y aceptas nuestra <a href="privacidad.html" style="color:var(--bronce-claro);text-decoration:underline;">Política de Privacidad</a> y los <a href="terminos.html" style="color:var(--bronce-claro);text-decoration:underline;">Términos de Uso</a>. (No usamos cookies de rastreo).</p>
+    <button id="btn-aceptar-privacidad" style="background:var(--vino);color:white;border:none;padding:0.6rem 1.2rem;cursor:pointer;font-weight:bold;white-space:nowrap;font-family:inherit;">Entendido</button>
+  </div>
+
   <script src="js/config.js"></script>
   <script src="js/main.js"></script>
+  <script>
+    // Mostrar banner de privacidad si no está en localStorage (cookie-free)
+    document.addEventListener("DOMContentLoaded", () => {
+      if (!localStorage.getItem('privacidad_aceptada')) {
+        const banner = document.getElementById('banner-privacidad');
+        banner.style.display = 'flex';
+        if (window.innerWidth <= 600) banner.style.flexDirection = 'column';
+        document.getElementById('btn-aceptar-privacidad').addEventListener('click', () => {
+          localStorage.setItem('privacidad_aceptada', 'true');
+          banner.style.display = 'none';
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>

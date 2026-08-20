@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Panel de administración</title>
 <meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
@@ -19,6 +22,7 @@
       <button class="tab-link" data-tab="galeria">Galería</button>
       <button class="tab-link" data-tab="paquetes">Paquetes</button>
       <button class="tab-link" data-tab="mensajes">Mensajes <span class="contador" id="contador-mensajes" hidden>0</span></button>
+      <button class="tab-link" data-tab="privacidad">Privacidad <span class="contador" id="contador-privacidad" hidden>0</span></button>
     </nav>
     <button class="boton boton-borde" id="btn-logout" style="margin-top:16px;">Cerrar sesión</button>
   </aside>
@@ -43,7 +47,7 @@
       <div class="tabla-wrap">
         <table>
           <thead>
-            <tr><th>Cliente</th><th>Evento</th><th>Fecha</th><th>Comuna</th><th>Paquete</th><th>Contacto</th><th>Estado</th><th></th></tr>
+            <tr><th>Cliente</th><th>Evento</th><th>Fecha</th><th>Comuna</th><th>Paquete</th><th>Contacto</th><th>Privacidad</th><th>Estado</th><th></th></tr>
           </thead>
           <tbody id="tabla-reservas-body"></tbody>
         </table>
@@ -105,6 +109,19 @@
     <section class="tab-panel" id="tab-mensajes">
       <div class="lista-tarjetas" id="lista-mensajes"></div>
       <div class="vacio" id="mensajes-vacio" hidden>Todavía no hay mensajes.</div>
+    </section>
+
+    <!-- PRIVACIDAD -->
+    <section class="tab-panel" id="tab-privacidad">
+      <div class="tabla-wrap">
+        <table>
+          <thead>
+            <tr><th>Tipo</th><th>Email / Teléfono</th><th>Fecha de Solicitud</th><th>Estado</th><th>Acciones</th></tr>
+          </thead>
+          <tbody id="tabla-privacidad-body"></tbody>
+        </table>
+      </div>
+      <div class="vacio" id="privacidad-vacio" hidden>No hay solicitudes de eliminación de datos.</div>
     </section>
 
   </main>
