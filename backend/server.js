@@ -13,6 +13,7 @@ const testimoniosRoutes = require('./routes/testimonios');
 const galeriaRoutes = require('./routes/galeria');
 const paquetesRoutes = require('./routes/paquetes');
 const contactoRoutes = require('./routes/contacto');
+const privacidadRoutes = require('./routes/privacidad');
 
 const app = express();
 app.set('trust proxy', 1);
