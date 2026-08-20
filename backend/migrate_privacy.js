@@ -1,7 +1,9 @@
-const path = require('path');
-const dbPath = path.join(__dirname, 'db', 'mariachi.db');
+require('dotenv').config();
 const { createClient } = require('@libsql/client');
-const db = createClient({ url: 'file:' + dbPath });
+const db = createClient({
+  url: process.env.TURSO_DATABASE_URL || 'file:./db/mariachi.db',
+  authToken: process.env.TURSO_AUTH_TOKEN || undefined,
+});
 
 async function migrate() {
     try {
