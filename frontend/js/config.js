@@ -23,5 +23,10 @@ window.SITE_CONFIG = {
     "San Fernando", "Santa Cruz", "Chimbarongo", "Pichilemu"
   ],
 
+  // 🎬 Video de YouTube: pega aquí el ID del video (lo que va después de ?v= en la URL).
+  // Ejemplo: https://www.youtube.com/watch?v=dQw4w9WgXcQ  →  videoYouTube: "dQw4w9WgXcQ"
+  // Deja vacío ("") para ocultar la sección de video.
+  videoYouTube: "",
+
   apiBaseUrl: "/api",
 };

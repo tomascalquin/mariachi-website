@@ -74,6 +74,23 @@
 
     const anio = document.getElementById("anio-actual");
     if (anio) anio.textContent = new Date().getFullYear();
+
+    // ---------- Sección de video ----------
+    if (cfg.videoYouTube) {
+      const seccion = document.getElementById("video");
+      const frame = document.getElementById("video-frame");
+      if (seccion && frame) {
+        seccion.hidden = false;
+        frame.innerHTML = `
+          <iframe
+            src="https://www.youtube.com/embed/${cfg.videoYouTube}?rel=0&modestbranding=1"
+            title="Video de demostración — ${cfg.nombreGrupo || 'Mariachi'}"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy">
+          </iframe>`;
+      }
+    }
   }
 
   // ---------- Paquetes ----------
@@ -277,6 +294,29 @@
     });
   }
 
+  function initFormContacto() {
+    const form = document.getElementById("form-contacto");
+    const msg = document.getElementById("mensaje-contacto");
+    if (!form) return;
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const boton = form.querySelector('button[type="submit"]');
+      boton.disabled = true;
+
+      const datos = Object.fromEntries(new FormData(form).entries());
+
+      const { ok, data } = await enviarJSON(`${cfg.apiBaseUrl}/contacto`, datos);
+      if (ok) {
+        mostrarMensaje(msg, data.mensaje || "¡Mensaje enviado! Te responderemos a la brevedad.", "exito");
+        form.reset();
+      } else {
+        mostrarMensaje(msg, data.error || "No pudimos enviar tu mensaje. Intenta de nuevo.", "error");
+      }
+      boton.disabled = false;
+    });
+  }
+
   function escapeHTML(str) {
     const div = document.createElement("div");
     div.textContent = str ?? "";
@@ -292,6 +332,7 @@
     initEstrellas();
     initFormReserva();
     initFormTestimonio();
+    initFormContacto();
     initScrollAnimations();
     initTopbarScroll();
     initNavActivo();

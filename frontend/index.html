@@ -133,32 +133,8 @@
     <section class="nosotros-section" id="nosotros">
       <div class="content nosotros-layout">
         <div class="nosotros-ilustracion">
-          <svg viewBox="0 0 320 260" class="ilus-mariachi" role="img" aria-label="Ilustración de un trío de mariachis">
-            <rect width="320" height="260" fill="#2a231e" />
-            <g fill="#c99a5b" opacity="0.6">
-              <circle cx="40" cy="30" r="1.6" />
-              <circle cx="80" cy="18" r="1.4" />
-              <circle cx="260" cy="24" r="1.6" />
-              <circle cx="290" cy="46" r="1.3" />
-              <circle cx="220" cy="16" r="1.3" />
-              <circle cx="140" cy="14" r="1.4" />
-            </g>
-            <g transform="translate(60,90)">
-              <circle cx="0" cy="0" r="16" fill="#e4dccb" />
-              <path d="M-22,120 Q-22,40 0,34 Q22,40 22,120 Z" fill="#1c1714" />
-              <rect x="-4" y="45" width="8" height="70" fill="#a9743a" />
-            </g>
-            <g transform="translate(160,78)">
-              <circle cx="0" cy="0" r="18" fill="#e4dccb" />
-              <path d="M-25,132 Q-25,44 0,38 Q25,44 25,132 Z" fill="#1c1714" />
-              <ellipse cx="0" cy="80" rx="20" ry="26" fill="#7a2331" opacity="0.85" />
-            </g>
-            <g transform="translate(258,94)">
-              <circle cx="0" cy="0" r="15" fill="#e4dccb" />
-              <path d="M-20,116 Q-20,38 0,32 Q20,38 20,116 Z" fill="#1c1714" />
-              <rect x="0" y="30" width="34" height="6" fill="#a9743a" transform="rotate(20)" />
-            </g>
-          </svg>
+          <!-- TODO: Sube tu propia foto a la carpeta img y cambia el src aquí (ej: src="img/mi-foto.jpg") -->
+          <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="La mariachi del valle de Colchagua" class="ilus-mariachi">
         </div>
         <div class="nosotros-texto">
           <div class="marca-chica" style="color:var(--vino)">Nuestra historia</div>
@@ -169,6 +145,22 @@
           <p>Cada presentación se prepara a la medida: el repertorio, la duración y el estilo se conversan antes, para
             que el resultado sea exactamente lo que imaginaste.</p>
           <a href="#reservar" class="btn-secundario">Conversemos tu evento</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VIDEO ============ -->
+    <section class="video-section" id="video" hidden>
+      <div class="content">
+        <div class="video-encabezado">
+          <div class="marca-chica" style="color:var(--bronce-claro)">Míralos en acción</div>
+          <h2>Una noche que no se olvida</h2>
+          <p>Así suena un evento con La mariachi del valle de Colchagua.</p>
+        </div>
+        <div class="video-wrapper">
+          <div class="video-frame" id="video-frame">
+            <!-- El iframe se inserta por JS al cargar config -->
+          </div>
         </div>
       </div>
     </section>
@@ -360,6 +352,33 @@
       </div>
     </section>
 
+    <!-- ============ CONTACTO ============ -->
+    <section class="form-section" id="contacto-form" style="border-top: 1px solid rgba(228,220,203,.1);">
+      <div class="content">
+        <div class="form-grid" style="grid-template-columns: 1fr;">
+          <div class="form-campo" style="max-width: 700px; margin: 0 auto; width: 100%;">
+            <div class="marca-chica" style="color:var(--bronce-claro); text-align: center;">Escríbenos</div>
+            <h2 style="font-size:clamp(24px,3.4vw,34px);color:var(--marfil);margin-bottom:1rem; text-align: center; font-family: 'Lora', serif;">¿Tienes alguna duda rápida?</h2>
+            <p style="color:#c9bda4; text-align: center; margin-bottom: 2rem;">Si tienes una consulta general que no sea una reserva, déjanos un mensaje y te responderemos a la brevedad.</p>
+            
+            <form id="form-contacto" novalidate>
+              <div class="form-row">
+                <div class="form-group"><label for="c-nombre">Nombre *</label><input type="text" id="c-nombre" name="nombre" required maxlength="100"></div>
+                <div class="form-group"><label for="c-telefono">Teléfono</label><input type="tel" id="c-telefono" name="telefono" maxlength="20"></div>
+              </div>
+              <div class="form-group"><label for="c-email">Correo electrónico</label><input type="email" id="c-email" name="email" maxlength="120"></div>
+              <div class="form-group">
+                <label for="c-mensaje">Mensaje *</label>
+                <textarea id="c-mensaje" name="mensaje" rows="4" required maxlength="500"></textarea>
+              </div>
+              <button type="submit" class="submit-btn" style="margin: 0 auto; display: block;">Enviar mensaje</button>
+              <div class="mensaje-formulario" id="mensaje-contacto" hidden></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- ============ PIE DE PÁGINA ============ -->
@@ -398,7 +417,7 @@
         <span>© <span id="anio-actual"></span> <span data-site="nombreGrupo">La mariachi del valle de Colchagua</span>. Todos los derechos reservados.</span>
         <span>
           <a href="privacidad.html" style="color:inherit;border-bottom:1px solid rgba(84,71,56,.4);transition:color .2s;" onmouseover="this.style.color='var(--vino)'" onmouseout="this.style.color=''">Privacidad</a>
-          &nbsp;·&nbsp; Ley 19.628 Chile &nbsp;·&nbsp; Hecho con ♪
+          &nbsp;·&nbsp; Hecho con ♪
         </span>
       </div>
     </div>
